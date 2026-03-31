@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>日惹旅行手册 2026 | v5</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:15px;scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;background:#faf8f4;color:#2d2a24;line-height:1.72;-webkit-font-smoothing:antialiased}
+  .hero{background:linear-gradient(135deg,#1a5632 0%,#2d8659 40%,#c87533 100%);color:#fff;padding:64px 32px 56px;text-align:center;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z' fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'/%3E%3C/svg%3E") repeat}
+  .hero h1{font-size:2.6rem;font-weight:800;letter-spacing:-0.5px;position:relative}
+  .hero .subtitle{font-size:1.15rem;opacity:0.92;margin-top:10px;position:relative}
+  .hero .meta{font-size:0.85rem;opacity:0.7;margin-top:18px;position:relative}
+  .container{max-width:1040px;margin:0 auto;padding:0 28px}
+  .toc-bar{background:#fff;border-bottom:1px solid #e5e0d8;padding:14px 0;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,0.06)}
+  .toc-bar .container{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center}
+  .toc-bar a{font-size:0.82rem;color:#5a7a5a;text-decoration:none;padding:4px 10px;border-radius:4px;transition:all .2s}
+  .toc-bar a:hover{background:#e8f0e4;color:#1a5632}
+  section{padding:48px 0 32px}
+  section+section{border-top:1px solid #e5e0d8}
+  h2{font-size:1.55rem;font-weight:700;color:#1a5632;margin-bottom:8px;display:flex;align-items:center;gap:10px}
+  h2 .num{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#1a5632,#2d8659);color:#fff;font-size:0.9rem;font-weight:700;flex-shrink:0}
+  .sec-summary{background:linear-gradient(90deg,#e8f5e0,#f0f8eb);border-left:4px solid #2d8659;padding:10px 16px;margin:4px 0 24px;font-size:0.92rem;color:#3a5a3a;border-radius:0 6px 6px 0}
+  h3{font-size:1.18rem;font-weight:700;color:#3a5a3a;margin:28px 0 12px}
+  h4{font-size:1.02rem;font-weight:700;color:#5a7a5a;margin:20px 0 8px}
+  p,li{font-size:0.95rem} p{margin-bottom:12px} ul,ol{margin:0 0 16px 24px} li{margin-bottom:4px} strong{color:#1a5632}
+  .table-wrap{overflow-x:auto;margin:16px 0 24px;border-radius:8px;box-shadow:0 1px 4px rgba(0,0,0,0.06)}
+  table{width:100%;border-collapse:collapse;font-size:0.88rem;background:#fff}
+  thead th{background:#1a5632;color:#fff;padding:10px 14px;text-align:left;font-weight:600;white-space:nowrap}
+  tbody td{padding:9px 14px;border-bottom:1px solid #eee;vertical-align:top}
+  tbody tr:hover{background:#f6faf4} tbody tr:last-child td{border-bottom:none}
+  .callout{background:#fffbeb;border-left:4px solid #c87533;padding:14px 18px;margin:16px 0 24px;border-radius:0 8px 8px 0;font-size:0.9rem;color:#6a4a1a}
+  .callout.green{background:#f0faf0;border-left-color:#2d8659;color:#2a5a2a}
+  .callout.red{background:#fff0f0;border-left-color:#c33;color:#7a2020}
+  .callout.blue{background:#f0f4ff;border-left-color:#3366cc;color:#1a3366}
+  .badge{display:inline-block;font-size:0.75rem;font-weight:700;padding:2px 8px;border-radius:4px;vertical-align:middle}
+  .badge.confirmed{background:#2d8659;color:#fff} .badge.pending{background:#f4a261;color:#fff}
+  .badge.must{background:#e63946;color:#fff} .badge.rec{background:#f4a261;color:#fff}
+  .badge.easy{background:#d4edda;color:#155724}
+  .status-card{background:#fff;border-radius:12px;padding:20px 24px;border:1px solid #e5e0d8;box-shadow:0 2px 8px rgba(0,0,0,0.04);margin-bottom:16px}
+  .status-card.locked{border-left:5px solid #2d8659} .status-card.draft{border-left:5px solid #f4a261}
+  .status-card .card-header{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+  .status-card .card-title{font-size:1.05rem;font-weight:700;color:#2d2a24}
+  .status-card .card-body{font-size:0.9rem;color:#555;line-height:1.7}
+  .status-card .card-body ul{margin:6px 0 0 18px}
+  .timeline{position:relative;margin:20px 0 28px;padding-left:32px}
+  .timeline::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:3px;background:linear-gradient(180deg,#2d8659,#c87533);border-radius:2px}
+  .timeline-item{position:relative;margin-bottom:28px}
+  .timeline-item::before{content:'';position:absolute;left:-26px;top:4px;width:14px;height:14px;border-radius:50%;background:#2d8659;border:3px solid #fff;box-shadow:0 0 0 2px #2d8659}
+  .timeline-item.pending-item::before{background:#f4a261;box-shadow:0 0 0 2px #f4a261}
+  .timeline-item .day-tag{display:inline-block;background:#1a5632;color:#fff;font-size:0.78rem;font-weight:700;padding:3px 12px;border-radius:12px;margin-bottom:8px}
+  .timeline-item.pending-item .day-tag{background:#c87533}
+  .timeline-item .day-title{font-size:1.05rem;font-weight:700;color:#2d2a24;margin-bottom:6px}
+  .timeline-item .day-detail{font-size:0.88rem;color:#555;line-height:1.7}
+  .timeline-item .day-detail ul{margin:6px 0 0 18px}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:16px 0 24px}
+  .info-box{background:#fff;border-radius:10px;padding:18px;border:1px solid #e5e0d8}
+  .info-box h4{margin-top:0}
+  footer{background:#1a5632;color:rgba(255,255,255,0.8);padding:32px 0;text-align:center;font-size:0.82rem;margin-top:40px}
+  footer strong{color:#fff}
+  @media print{.toc-bar{display:none}.hero{padding:32px 20px}body{font-size:13px}section{break-inside:avoid}}
+  @media(max-width:640px){.hero h1{font-size:1.8rem}.info-grid{grid-template-columns:1fr}table{font-size:0.82rem}thead th,tbody td{padding:7px 10px}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🌴 日惹旅行手册</h1>
+  <div class="subtitle">Yogyakarta · 2026年4月30日–5月5日 · 6天5晚</div>
+  <div class="meta">Author: yirenguo &nbsp;|&nbsp; v5 &nbsp;|&nbsp; 2026-03-31 &nbsp;|&nbsp; 🟢 已确定 6 项 · 🟡 待确定 1 项（仅 D5 半天）</div>
+</div>
+
+<nav class="toc-bar">
+  <div class="container">
+    <a href="#sec1">行程总览</a>
+    <a href="#sec2">✅ 机票</a>
+    <a href="#sec3">✅ 酒店</a>
+    <a href="#sec4">✅ D0 出发</a>
+    <a href="#sec5">✅ D1 市区</a>
+    <a href="#sec6">✅ D2 遗产+火山</a>
+    <a href="#sec7">✅ D3 天坑+海滩</a>
+    <a href="#sec8">✅ D4 文化</a>
+    <a href="#sec9">💡 D5 返程</a>
+    <a href="#sec10">景点预约</a>
+    <a href="#sec11">交通</a>
+    <a href="#sec12">餐饮</a>
+    <a href="#sec12b">🍽️ 餐食待办</a>
+    <a href="#sec13">实用Tips</a>
+  </div>
+</nav>
+
+<div class="container">
+
+<!-- 1. 行程总览 -->
+<section id="sec1">
+  <h2><span class="num">1</span>行程总览</h2>
+  <div class="sec-summary">绿色 = 已确定并预订，橙色 = 待讨论。行程已基本定型，仅 D5 半天待安排。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>日期</th><th>住宿</th><th>主题</th><th>核心内容</th><th>状态</th></tr></thead>
+    <tbody>
+      <tr style="background:#f0faf0"><td><strong>D0</strong> 4/30 (三)</td><td>✈️ 飞行</td><td>出发</td><td>HKG 09:40→CGK→YIA 17:20 · Malioboro 夜市</td><td><span class="badge confirmed">已确定</span></td></tr>
+      <tr style="background:#f0faf0"><td><strong>D1</strong> 5/1 (四)</td><td>🏨 Phoenix</td><td>市区文化</td><td>皇宫 · 水宫 · Prawirotaman · Malioboro 夜市</td><td><span class="badge confirmed">已确定</span></td></tr>
+      <tr style="background:#f0faf0"><td><strong>D2</strong> 5/2 (五)</td><td>🏨 Phoenix</td><td>遗产+火山</td><td>Setumbu 日出→婆罗浮屠→Merapi Lava→普兰巴南</td><td><span class="badge confirmed">已确定</span></td></tr>
+      <tr style="background:#f0faf0"><td><strong>D3</strong> 5/3 (六)</td><td>🏨 Phoenix</td><td>天坑+海滩</td><td>Jomblang Cave 天坑 + Timang Beach 吉普+缆车</td><td><span class="badge confirmed">已确定</span></td></tr>
+      <tr style="background:#f0faf0"><td><strong>D4</strong> 5/4 (日)</td><td>🏨 Phoenix</td><td>文化体验</td><td>蜡染体验 + 甘美兰音乐 + Sonobudoyo 皮影戏</td><td><span class="badge confirmed">已确定</span></td></tr>
+      <tr><td><strong>D5</strong> 5/5 (一)</td><td>✈️ 返程</td><td>回家</td><td>半天自由→YIA 18:05→次日 05:45 抵港</td><td><span class="badge pending">待确定</span></td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 2. 机票 -->
+<section id="sec2">
+  <h2><span class="num">2</span>✅ 已确定 · 往返机票</h2>
+  <div class="sec-summary">印尼鹰航 Garuda Indonesia，香港经雅加达转机，全程含餐含托运行李。</div>
+  <div class="status-card locked">
+    <div class="card-header"><span class="badge confirmed">已购票</span><span class="card-title">去程 · 4月30日（周三）</span></div>
+    <div class="card-body">
+      <div class="table-wrap" style="margin-top:0"><table>
+        <thead><tr><th>航段</th><th>航班</th><th>机型</th><th>起飞</th><th>到达</th><th>飞行</th></tr></thead>
+        <tbody>
+          <tr><td>香港 HKG T1→雅加达 CGK T3</td><td>GA 863</td><td>B737</td><td>09:40</td><td>13:25</td><td>4h45m</td></tr>
+          <tr><td colspan="6" style="background:#fff8e8;color:#856404;font-size:0.85rem">🔄 中转雅加达 <strong>2h35m</strong> · ⚠️ <strong>需重新托运行李</strong></td></tr>
+          <tr><td>雅加达 CGK T3→日惹 YIA</td><td>GA 202</td><td>B737</td><td>16:00</td><td>17:20</td><td>1h20m</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:8px">抵达日惹 <strong>17:20</strong>，可赶上晚餐和 Malioboro 夜市。</p>
+    </div>
+  </div>
+  <div class="status-card locked">
+    <div class="card-header"><span class="badge confirmed">已购票</span><span class="card-title">回程 · 5月5日（周一）</span></div>
+    <div class="card-body">
+      <div class="table-wrap" style="margin-top:0"><table>
+        <thead><tr><th>航段</th><th>航班</th><th>机型</th><th>起飞</th><th>到达</th><th>飞行</th></tr></thead>
+        <tbody>
+          <tr><td>日惹 YIA→雅加达 CGK T3</td><td>GA 203</td><td>B737</td><td>18:05</td><td>19:30</td><td>1h25m</td></tr>
+          <tr><td colspan="6" style="background:#fff8e8;color:#856404;font-size:0.85rem">🔄 中转雅加达 <strong>4h20m</strong> · ⚠️ <strong>需重新托运行李</strong></td></tr>
+          <tr><td>雅加达 CGK T3→香港 HKG T1</td><td>GA 860</td><td>B737</td><td>23:50</td><td>05:45 (+1天)</td><td>4h55m</td></tr>
+        </tbody>
+      </table></div>
+      <p style="margin-top:8px">D5 白天充裕，<strong>15:30 出发去机场即可</strong>。抵港次日 05:45。</p>
+    </div>
+  </div>
+  <div class="callout green"><strong>✈️ 乘机提醒：</strong>鹰航全服航空，含托运+餐食。雅加达转机<strong>需重新托运行李</strong>（去程回程均如此）。建议携带护照复印件 2 份。</div>
+</section>
+
+<!-- 3. 酒店 -->
+<section id="sec3">
+  <h2><span class="num">3</span>✅ 已确定 · 酒店</h2>
+  <div class="sec-summary">The Phoenix Hotel Yogyakarta - MGallery，Malioboro 街核心位置，1918年殖民历史建筑。</div>
+  <div class="status-card locked">
+    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">The Phoenix Hotel Yogyakarta - MGallery</span></div>
+    <div class="card-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div>
+          <p><strong>📍 位置</strong>：Jl. Jenderal Sudirman No. 9，Malioboro 步行可达</p>
+          <p><strong>📅 入住</strong>：4/30→5/5（5晚）</p>
+          <p><strong>💰 费用</strong>：¥2,523 含税（~¥505/晚）</p>
+          <p><strong>⭐ 评分</strong>：Booking 9.0 / TripAdvisor 4.5</p>
+        </div>
+        <div>
+          <p><strong>🏛️ 特色</strong>：1918年荷兰殖民历史建筑</p>
+          <p><strong>🏊 设施</strong>：庭院泳池 · 殖民庭院 · Spa</p>
+          <p><strong>🍳 早餐</strong>：含自助早餐</p>
+          <p><strong>📶 WiFi</strong>：免费</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout"><strong>💡 酒店备忘：</strong><ul style="margin:6px 0 0 18px">
+    <li>入住 14:00 / 退房 11:00（D5 退房后寄存行李，15:30 出发去机场）</li>
+    <li>距 YIA 机场 ~50min（Grab ~IDR 250k）</li>
+    <li>步行范围：Malioboro 5min · 皇宫 15min · 水宫 20min</li>
+  </ul></div>
+</section>
+
+<!-- 4. D0 出发 -->
+<section id="sec4">
+  <h2><span class="num">4</span>✅ D0 · 出发日（4月30日）</h2>
+  <div class="sec-summary">白天飞行，17:20 抵达日惹，入住后 Malioboro 夜市初体验。</div>
+  <div class="timeline"><div class="timeline-item">
+    <div class="day-tag">D0 · 4月30日（周三）</div>
+    <div class="day-title">出发 · 傍晚抵达</div>
+    <div class="day-detail"><ul>
+      <li><strong>07:00</strong>：到达香港机场</li>
+      <li><strong>09:40</strong>：出发 GA 863</li>
+      <li><strong>13:25</strong>：抵雅加达，提取行李→重新托运→转机</li>
+      <li><strong>17:20</strong>：抵达日惹 YIA</li>
+      <li><strong>18:00–18:50</strong>：Grab 到 Phoenix Hotel（~50min）</li>
+      <li><strong>19:00</strong>：入住休整</li>
+      <li><strong>19:30–21:30</strong>：<strong>Malioboro 夜市</strong> — Nasi Kucing + Coffee Joss + 闲逛</li>
+      <li><strong>22:00</strong>：回酒店休息</li>
+    </ul></div>
+  </div></div>
+</section>
+
+<!-- 5. D1 市区 -->
+<section id="sec5">
+  <h2><span class="num">5</span>✅ D1 · 市区文化（5月1日）</h2>
+  <div class="sec-summary">自由探索日惹市区：皇宫 · 水宫 · Prawirotaman 文艺区 · Malioboro 夜市。休闲节奏。</div>
+  <div class="timeline"><div class="timeline-item">
+    <div class="day-tag">D1 · 5月1日（周四）</div>
+    <div class="day-title">市区文化探索日</div>
+    <div class="day-detail"><ul>
+      <li><strong>08:00–09:00</strong>：酒店早餐</li>
+      <li><strong>09:30–11:00</strong>：<strong>日惹皇宫 Kraton</strong>（步行 15min）— 苏丹王宫，~¥7</li>
+      <li><strong>11:00–12:00</strong>：<strong>水宫 Taman Sari</strong>（步行 5min）— 皇家花园，~¥7</li>
+      <li><strong>12:00–13:30</strong>：午餐 — <strong>Bale Raos 宫廷料理</strong>（皇宫内，人均 ¥50–100）</li>
+      <li><strong>14:00–15:30</strong>：酒店午休 / 泳池</li>
+      <li><strong>15:30–17:00</strong>：<strong>Prawirotaman 文艺区</strong> — 咖啡馆、独立书店（Grab 10min）</li>
+      <li><strong>17:00–18:00</strong>：<strong>Beringharjo 市场</strong> — 蜡染布、香料</li>
+      <li><strong>18:30–20:30</strong>：<strong>Malioboro 晚餐</strong> — Gudeg Yu Djum / Sate Klathak + 夜市</li>
+      <li><strong>21:00</strong>：回酒店 · <strong>务必早睡！明天 03:00 起床！</strong></li>
+    </ul></div>
+  </div></div>
+  <div class="callout"><strong>⏰ D1 注意：</strong><ul style="margin:6px 0 0 18px">
+    <li>皇宫 Kraton：周二–日 08:30–14:00（周一休），5/1 周四正常</li>
+    <li>水宫 Taman Sari：每天 09:00–15:00</li>
+    <li><strong>晚上务必早睡！D2 需 03:00 起床，03:45 大堂集合！</strong></li>
+  </ul></div>
+</section>
+
+<!-- 6. D2 双遗产+火山 -->
+<section id="sec6">
+  <h2><span class="num">6</span>✅ D2 · 双遗产+火山（5月2日）</h2>
+  <div class="sec-summary">yogyakartatour 包团 · Setumbu 日出→婆罗浮屠→Merapi Lava Tour→普兰巴南 · 升级版 $110/人（申请中）· 03:45–15:30</div>
+  <div class="status-card locked">
+    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">Borobudur Sunrise + Merapi Lava + Prambanan（升级版）</span></div>
+    <div class="card-body">
+      <h4 style="margin-top:4px;color:#1a5632">🌅 完整行程</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>时间</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>03:45</strong></td><td>🚗 酒店接人（旅行社邮件确认 pickup 03:45）</td></tr>
+          <tr><td><strong>04:30–04:45</strong></td><td>🥾 徒步登 Punthuk Setumbu 山顶</td></tr>
+          <tr><td><strong>04:45–06:00</strong></td><td>🌅 <strong>日出！</strong>俯瞰婆罗浮屠+默拉皮火山</td></tr>
+          <tr><td><strong>06:00–06:30</strong></td><td>🍳 下山+简易早餐</td></tr>
+          <tr><td><strong>07:00–09:00</strong></td><td>🏛️ 婆罗浮屠登顶参观+导游讲解</td></tr>
+          <tr><td><strong>09:00–09:30</strong></td><td>🚗 驱车前往默拉皮火山区</td></tr>
+          <tr><td><strong>09:30–11:30</strong></td><td>🌋 <strong>Merapi Lava Tour</strong> — 吉普车穿越熔岩遗迹·废弃村庄·博物馆·观景台</td></tr>
+          <tr><td><strong>11:30–12:00</strong></td><td>🍽️ 午餐</td></tr>
+          <tr><td><strong>12:00–13:00</strong></td><td>🚗 驱车前往普兰巴南</td></tr>
+          <tr><td><strong>13:00–14:30</strong></td><td>🕉️ 普兰巴南印度教寺庙群</td></tr>
+          <tr><td><strong>15:00–15:30</strong></td><td>🚗 返回酒店</td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout green" style="margin-top:12px"><strong>✅ 升级已确认：</strong>旅行社已确认升级为含 Merapi Lava 版本（$110/人），行程延长至 ~12h。原版 $92/人不含 Merapi。</div>
+      <h4 style="color:#1a5632">✅ 费用包含</h4>
+      <ul>
+        <li>全程空调专车+英文司机+酒店接送</li>
+        <li>婆罗浮屠门票（外国人登顶票）+登顶附加票</li>
+        <li>Punthuk Setumbu Hill 门票</li>
+        <li>Merapi Lava Tour 吉普车（升级后含）</li>
+        <li>普兰巴南门票（外国人票）</li>
+        <li>导游·停车费·矿泉水</li>
+      </ul>
+      <h4 style="color:#c87533">❌ 费用不含</h4>
+      <ul><li>酒店·正餐·个人消费</li></ul>
+    </div>
+  </div>
+  <div class="callout"><strong>⏰ D2 提醒：</strong><ul style="margin:6px 0 0 18px">
+    <li><strong>前一晚早睡！</strong>闹钟设 03:00，03:45 大堂集合</li>
+    <li>着装：长裤+运动鞋+<strong>薄外套</strong>（山顶 ~20°C）+<strong>口罩</strong>（Merapi 灰尘大）</li>
+    <li>携带：手电筒·相机·水·防蚊液·太阳镜·零食</li>
+    <li>全天 ~12h，比较辛苦。15:30 回酒店后好好休息</li>
+  </ul></div>
+</section>
+
+<!-- 7. D3 天坑+海滩 -->
+<section id="sec7">
+  <h2><span class="num">7</span>✅ D3 · 天坑+海滩（5月3日）</h2>
+  <div class="sec-summary">yogyakartatour 包团 · Jomblang Cave 天坑速降 + Timang Beach 4×4 吉普 &amp; 缆车登岛 · 含午餐 · 07:00–17:30</div>
+  <div class="status-card locked">
+    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">Jomblang Cave + Timang Beach Tour</span></div>
+    <div class="card-body">
+      <h4 style="margin-top:4px;color:#1a5632">🕳️🏖️ 完整行程</h4>
+      <div class="table-wrap"><table>
+        <thead><tr><th>时间</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>07:00</strong></td><td>🚗 酒店接人（pickup 07:00）</td></tr>
+          <tr><td><strong>07:00–09:15</strong></td><td>🚗 驱车前往 Jomblang Cave（~2h15m）</td></tr>
+          <tr><td><strong>09:15–12:00</strong></td><td>🕳️ <strong>Jomblang Cave</strong> — 速降 60m→穿越地下河→仰望<strong>"天堂之光"</strong>（10–12点光线最佳）</td></tr>
+          <tr><td><strong>12:00–13:00</strong></td><td>🍽️ <strong>午餐</strong>（Lunch Box 已含）</td></tr>
+          <tr><td><strong>13:00–14:00</strong></td><td>🚗 驱车前往 Timang Beach</td></tr>
+          <tr><td><strong>14:00–16:00</strong></td><td>🏖️ <strong>Timang Beach</strong> — 4×4 Jeep 穿越到海滩 + <strong>Gondola 缆车</strong>登上 Timang Island · 壮阔海崖+印度洋巨浪</td></tr>
+          <tr><td><strong>16:00–17:30</strong></td><td>🚗 返回酒店</td></tr>
+        </tbody>
+      </table></div>
+      <h4 style="color:#1a5632">✅ 费用包含</h4>
+      <ul>
+        <li>全程空调专车+英文司机+酒店接送</li>
+        <li>Jomblang Cave 门票（外国人票）+绳降装备+安全装备+导游</li>
+        <li>Timang Beach 4×4 Jeep（≤4人 1 辆，5人+ 2 辆）</li>
+        <li>Timang Beach Gondola Ride（缆车登岛）</li>
+        <li>Lunch Box · 停车费 · 矿泉水</li>
+      </ul>
+      <h4 style="color:#c87533">🦞 可选加购</h4>
+      <ul><li><strong>Lobster Meal Package</strong>：USD 50 / 4 人 — Timang Beach 现捕龙虾大餐</li></ul>
+      <h4 style="color:#c87533">❌ 费用不含</h4>
+      <ul><li>酒店 · 个人消费</li></ul>
+    </div>
+  </div>
+  <div class="callout red"><strong>⚠️ D3 必备物品（重要！）</strong><ul style="margin:6px 0 0 18px">
+    <li><strong>袜子</strong>（天坑速降必须穿）</li>
+    <li><strong>毛巾</strong>+<strong>换洗衣服</strong>（天坑+海滩可能弄湿弄脏）</li>
+    <li><strong>拖鞋/凉鞋</strong>（海滩穿）</li>
+    <li><strong>防水小包</strong>（保护手机钱包）</li>
+    <li>运动鞋（上午天坑）+ 速干衣裤</li>
+    <li>相机/GoPro（天坑光束+海崖缆车 超出片）</li>
+    <li>防晒霜（下午海滩暴晒）</li>
+  </ul></div>
+  <div class="callout green"><strong>💡 D3 提示：</strong><ul style="margin:6px 0 0 18px">
+    <li>"天堂之光"最佳时间 10:00–12:00，我们 09:15 入场，时间完美</li>
+    <li>天坑速降有工作人员全程协助，但<strong>恐高者慎选</strong></li>
+    <li>Timang Beach Gondola 是人力手拉缆车横跨海面，非常刺激！</li>
+    <li>可选加购龙虾套餐（$50/4人），性价比极高</li>
+    <li>17:30 回酒店后建议简单吃晚餐+休息</li>
+  </ul></div>
+</section>
+
+<!-- 8. D4 文化体验 -->
+<section id="sec8">
+  <h2><span class="num">8</span>✅ D4 · 文化体验日（5月4日）</h2>
+  <div class="sec-summary">最轻松的一天：蜡染手工+甘美兰音乐+皮影戏。市区内活动，D2+D3 高强度后充分恢复。</div>
+  <div class="timeline"><div class="timeline-item">
+    <div class="day-tag">D4 · 5月4日（周日）</div>
+    <div class="day-title">爪哇文化深度体验日</div>
+    <div class="day-detail"><ul>
+      <li><strong>08:00–09:30</strong>：酒店早餐+休整</li>
+      <li><strong>10:00–12:30</strong>：🎨 <strong>蜡染体验 Batik Workshop</strong>（Klook 预订）— 画蜡→染色→成品带走，~2.5h，~¥90–180/人</li>
+      <li><strong>12:30–14:00</strong>：午餐 — <strong>The House of Raminten</strong>（传统爪哇，三层建筑+传统服饰服务员，¥40–80）</li>
+      <li><strong>14:00–15:00</strong>：酒店休息/泳池</li>
+      <li><strong>15:30–17:00</strong>：🎵 <strong>甘美兰 Gamelan 体验</strong> — 爪哇传统打击乐合奏，~¥90–150/人</li>
+      <li><strong>17:00–18:30</strong>：Malioboro 最后购物+伴手礼（Bakpia Pathok 25 + 蜡染布）</li>
+      <li><strong>19:00–19:30</strong>：晚餐</li>
+      <li><strong>20:00–21:30</strong>：🎭 <strong>Sonobudoyo 皮影戏</strong> — 每晚 20:00，正宗爪哇皮影，联合国非遗，仅 ~¥15–25/人</li>
+      <li><strong>22:00</strong>：回酒店</li>
+    </ul></div>
+  </div></div>
+  <div class="callout green"><strong>🎯 D4 推荐：</strong><ul style="margin:6px 0 0 18px">
+    <li>特意安排低体力文化活动，D2+D3 后恢复</li>
+    <li>蜡染成品是独一无二的纪念品</li>
+    <li>皮影戏联合国非遗，日惹最正宗，票价极低不可错过</li>
+  </ul></div>
+  <div class="callout"><strong>📋 D4 预订：</strong><ul style="margin:6px 0 0 18px">
+    <li><strong>蜡染体验</strong>：出发前在 Klook 搜索 "Batik Yogyakarta" 预订</li>
+    <li><strong>甘美兰</strong>：到日惹后通过酒店前台或 Klook 预订</li>
+    <li><strong>皮影戏</strong>：Sonobudoyo 博物馆每晚演出，无需提前预约，现场买票</li>
+    <li><strong>The House of Raminten</strong>：热门餐厅，建议提前 1 天致电预订</li>
+  </ul></div>
+</section>
+
+<!-- 9. D5 返程 -->
+<section id="sec9">
+  <h2><span class="num">9</span>💡 D5 · 返程日（5月5日）</h2>
+  <div class="sec-summary">航班 18:05，白天充裕。11:00 退房寄存行李，15:30 出发去机场。半天自由时间待安排。</div>
+  <div class="timeline"><div class="timeline-item pending-item">
+    <div class="day-tag">D5 · 5月5日（周一）· 待确定</div>
+    <div class="day-title">自由半天 + 傍晚返程</div>
+    <div class="day-detail"><ul>
+      <li><strong>07:30–09:00</strong>：最后一顿酒店早餐</li>
+      <li><strong>09:00–11:00</strong>：半天自由活动（见下方选项）</li>
+      <li><strong>11:00</strong>：退房，行李寄存前台</li>
+      <li><strong>11:00–14:00</strong>：轻装继续逛
+        <ul>
+          <li>选项 A：<strong>Kota Gede 银器村</strong>（Grab 15min，银器作坊）</li>
+          <li>选项 B：<strong>Prambanan 周边小寺 Sewu / Plaosan</strong></li>
+          <li>选项 C：<strong>Malioboro 最后一逛+伴手礼</strong></li>
+        </ul>
+      </li>
+      <li><strong>14:00–15:00</strong>：最后午餐</li>
+      <li><strong>15:00–15:30</strong>：回酒店取行李</li>
+      <li><strong>15:30</strong>：Grab 出发去 YIA（~50min）</li>
+      <li><strong>16:20</strong>：到达机场值机</li>
+      <li><strong>18:05</strong>：YIA→CGK GA 203</li>
+      <li><strong>19:30–23:50</strong>：雅加达转机 4h20m</li>
+      <li><strong>23:50</strong>：CGK→HKG GA 860 → 次日 <strong>05:45</strong> 抵港</li>
+    </ul></div>
+  </div></div>
+  <div class="callout green"><strong>🎉 D5 时间充裕：</strong>航班 18:05，15:30 出发即可，<strong>白天 6+h 自由时间</strong>。可补去没去的地方或悠闲二刷。</div>
+</section>
+
+<!-- 10. 景点预约 -->
+<section id="sec10">
+  <h2><span class="num">10</span>景点门票 + 预约指南</h2>
+  <div class="sec-summary">D2、D3 门票已全含在包团中。D4 蜡染+甘美兰需 Klook 预订，皮影戏现场买票。D3 可选加购龙虾套餐。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>景点</th><th>日期</th><th>门票</th><th>预约</th><th>渠道</th></tr></thead>
+    <tbody>
+      <tr style="background:#f0faf0"><td><strong>婆罗浮屠 日出+登顶</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在 yogyakartatour 包团</td></tr>
+      <tr style="background:#f0faf0"><td><strong>Punthuk Setumbu Hill</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团</td></tr>
+      <tr style="background:#f0faf0"><td><strong>Merapi Lava Tour</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（升级版）</td></tr>
+      <tr style="background:#f0faf0"><td><strong>普兰巴南</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团</td></tr>
+      <tr style="background:#f0faf0"><td><strong>Jomblang Cave 天坑</strong></td><td>D3 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（含装备+绳降+导游）</td></tr>
+      <tr style="background:#f0faf0"><td><strong>Timang Beach + Gondola</strong></td><td>D3 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（含 4×4 Jeep+Gondola+午餐）</td></tr>
+      <tr><td><strong>皇宫 Kraton</strong></td><td>D1</td><td>~¥7</td><td><span class="badge easy">免预约</span></td><td>现场</td></tr>
+      <tr><td><strong>水宫 Taman Sari</strong></td><td>D1</td><td>~¥7</td><td><span class="badge easy">免预约</span></td><td>现场</td></tr>
+      <tr><td><strong>蜡染体验</strong></td><td>D4</td><td>~¥90–180/人</td><td><span class="badge rec">建议预约</span></td><td>Klook</td></tr>
+      <tr><td><strong>甘美兰体验</strong></td><td>D4</td><td>~¥90–150/人</td><td><span class="badge rec">建议预约</span></td><td>Klook / 酒店前台</td></tr>
+      <tr><td><strong>Sonobudoyo 皮影戏</strong></td><td>D4</td><td>~¥15–25/人</td><td><span class="badge easy">免预约</span></td><td>现场每晚 20:00</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 11. 交通 -->
+<section id="sec11">
+  <h2><span class="num">11</span>当地交通</h2>
+  <div class="sec-summary">D2、D3 全程含接送。D1、D4 市区步行/Grab。D0、D5 机场往返 Grab。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>日期</th><th>交通</th><th>费用</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td><strong>D0</strong></td><td>YIA→Phoenix Hotel</td><td>Grab ~¥110</td><td>~50min</td></tr>
+      <tr style="background:#f0faf0"><td><strong>D1</strong></td><td>步行为主+Grab</td><td>~¥0–30</td><td>核心景点步行范围</td></tr>
+      <tr style="background:#f0faf0"><td><strong>D2</strong></td><td>✅ 包团全程接送</td><td>已含</td><td>03:45 接→15:30 送回</td></tr>
+      <tr style="background:#f0faf0"><td><strong>D3</strong></td><td>✅ 包团全程接送</td><td>已含</td><td>07:00 接→17:30 送回</td></tr>
+      <tr><td><strong>D4</strong></td><td>市区 Grab / 步行</td><td>~¥30–60</td><td>蜡染作坊+酒店+皮影戏</td></tr>
+      <tr><td><strong>D5</strong></td><td>Phoenix→YIA</td><td>Grab ~¥110</td><td>15:30 出发</td></tr>
+    </tbody>
+  </table></div>
+  <h3>交通工具速查</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>方式</th><th>适用</th><th>价格</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Grab/GoJek</strong></td><td>日常首选</td><td>¥10–25/程</td><td>必装 App</td></tr>
+      <tr><td><strong>步行</strong></td><td>Phoenix→Malioboro/皇宫</td><td>免费</td><td>酒店位置极好</td></tr>
+      <tr><td><strong>Becak 人力车</strong></td><td>短途体验</td><td>¥10–25</td><td>先谈价再上车</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 12. 餐饮 -->
+<section id="sec12">
+  <h2><span class="num">12</span>餐饮指南</h2>
+  <div class="sec-summary">日惹是爪哇美食之都。路边摊 ¥5–15，餐厅 ¥20–50，高端 ¥50–200。酒店含早，每天只需午餐+晚餐。</div>
+  <h3>🍜 必吃清单</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>美食</th><th>说明</th><th>参考价</th><th>推荐</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Gudeg</strong></td><td>菠萝蜜+椰奶+棕榈糖慢炖</td><td>¥15–25</td><td>Gudeg Yu Djum</td></tr>
+      <tr><td><strong>Sate Klathak</strong></td><td>自行车辐条串炭火羊肉</td><td>¥15–30</td><td>Pak Pong</td></tr>
+      <tr><td><strong>Nasi Kucing</strong></td><td>迷你猫饭，一口一味</td><td>¥2–5/份</td><td>Malioboro Angkringan</td></tr>
+      <tr><td><strong>Bakpia</strong></td><td>绿豆酥饼，最佳伴手礼</td><td>¥15–30/盒</td><td>Bakpia Pathok 25</td></tr>
+      <tr><td><strong>Coffee Joss</strong></td><td>烧红木炭放入咖啡！</td><td>¥3–5</td><td>Malioboro 夜市</td></tr>
+    </tbody>
+  </table></div>
+  <h3>🍽️ 推荐餐厅</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>餐厅</th><th>类型</th><th>人均</th><th>建议</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Bale Raos</strong></td><td>宫廷料理</td><td>¥50–100</td><td>D1 午餐</td></tr>
+      <tr><td><strong>The House of Raminten</strong></td><td>传统爪哇</td><td>¥40–80</td><td>D4 午餐</td></tr>
+      <tr><td><strong>Gudeg Yu Djum</strong></td><td>Gudeg 老店</td><td>¥15–25</td><td>D0/D1 晚餐</td></tr>
+      <tr><td><strong>Mediterranea</strong></td><td>地中海+印尼</td><td>¥50–100</td><td>任意晚餐</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><strong>🍴 饮食注意：</strong>sambal 非常辣（说 "Tidak pedas" 不要辣）· 只喝瓶装水 · 选人气旺摊位 · 备止泻药</div>
+</section>
+
+<!-- 12b. 餐食待办 -->
+<section id="sec12b">
+  <h2><span class="num">🍽️</span>餐食待办 · Meal Slots</h2>
+  <div class="sec-summary">酒店每天含早餐；D2/D3 一日游午餐随行解决（含或路边吃）无需规划。以下列出需要主动安排的餐食时段。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>日期</th><th>餐次</th><th>时间段</th><th>建议餐厅</th><th>人均</th><th>需预订？</th><th>备注</th></tr></thead>
+    <tbody>
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D0 · 4/30（抵达日）</td></tr>
+      <tr><td>D0</td><td>🌙 晚餐</td><td>19:30–21:00</td><td><strong>Malioboro 夜市</strong> — Nasi Kucing + Coffee Joss</td><td>¥10–30</td><td><span class="badge easy">免预订</span></td><td>到达首餐，逛吃体验为主</td></tr>
+
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D1 · 5/1（市区日）</td></tr>
+      <tr><td>D1</td><td>☀️ 午餐</td><td>12:00–13:30</td><td><strong>Bale Raos 宫廷料理</strong></td><td>¥50–100</td><td><span class="badge rec">建议预订</span></td><td>皇宫内餐厅，正宗宫廷菜，中午用餐高峰建议提前 1 天致电</td></tr>
+      <tr><td>D1</td><td>🌙 晚餐</td><td>18:30–20:00</td><td><strong>Gudeg Yu Djum</strong>（Gudeg 老字号）或 <strong>Sate Klathak Pak Pong</strong></td><td>¥15–30</td><td><span class="badge easy">免预订</span></td><td>两家都是排队名店，早点去不用等太久</td></tr>
+
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D2 · 5/2（一日游 · 午餐随行）</td></tr>
+      <tr><td>D2</td><td>🌙 晚餐</td><td>16:00–18:00</td><td><strong>Mediterranea</strong>（地中海+印尼融合）或 <strong>酒店附近简餐</strong></td><td>¥50–100</td><td><span class="badge rec">建议预订</span></td><td>15:30 回酒店，可能很累。Mediterranea 环境好适合放松；也可选酒店餐厅。建议 D1 晚致电预订</td></tr>
+
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D3 · 5/3（一日游 · 午餐已含）</td></tr>
+      <tr><td>D3</td><td>🌙 晚餐</td><td>18:00–19:30</td><td><strong>Sate Klathak Pak Pong</strong>（如 D1 没去）或 <strong>Gudeg Pawon</strong>（限量版柴火 Gudeg）</td><td>¥15–40</td><td><span class="badge easy">免预订</span></td><td>17:30 回酒店，可能较累，选酒店附近即可。Gudeg Pawon 在 Bantul，需 Grab 20min</td></tr>
+
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D4 · 5/4（文化日）</td></tr>
+      <tr><td>D4</td><td>☀️ 午餐</td><td>12:30–14:00</td><td><strong>The House of Raminten</strong></td><td>¥40–80</td><td><span class="badge must">必须预订</span></td><td>三层传统爪哇餐厅，极热门。<strong>务必提前 1–2 天致电预订</strong></td></tr>
+      <tr><td>D4</td><td>🌙 晚餐</td><td>19:00–19:45</td><td><strong>Warung Handayani</strong>（Nasi Gudeg）或 <strong>酒店附近快餐</strong></td><td>¥15–30</td><td><span class="badge easy">免预订</span></td><td>皮影戏 20:00 开场，晚餐需快速解决，选 Malioboro 附近</td></tr>
+
+      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D5 · 5/5（返程日）</td></tr>
+      <tr><td>D5</td><td>☀️ 午餐</td><td>14:00–15:00</td><td><strong>Nanamia Pizzeria</strong>（意式）或 <strong>Via Via Cafe</strong>（旅人咖啡馆）</td><td>¥30–60</td><td><span class="badge easy">免预订</span></td><td>最后一餐，轻松吃完取行李去机场</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout red"><strong>📋 需提前预订的餐厅（共 3 家）：</strong>
+    <ol style="margin:8px 0 0 24px">
+      <li><strong>Bale Raos</strong>（D1 午餐）— 建议出发前或 D0 晚上致电预订<br>📞 +62 274 373 682</li>
+      <li><strong>Mediterranea</strong>（D2 晚餐）— 建议 D1 白天致电预订<br>📞 +62 274 546 363</li>
+      <li><strong>The House of Raminten</strong>（D4 午餐）— 周末极热门，<strong>务必提前 1–2 天预订</strong><br>📞 +62 274 547 397</li>
+    </ol>
+  </div>
+  <div class="callout green"><strong>💡 餐食策略：</strong><ul style="margin:6px 0 0 18px">
+    <li>每天酒店含自助早餐，不用操心</li>
+    <li>D2/D3 午餐一日游随行吃，无需规划</li>
+    <li>晚餐优先选酒店步行范围内，一日游回来后不想再跑远</li>
+    <li>Gudeg/Sate Klathak/Nasi Kucing 是日惹三大必吃，尽量分配到不同天</li>
+    <li>D3 龙虾套餐（$50/4人）如果加购，下午回来可能不太饿，晚餐可简单吃</li>
+  </ul></div>
+</section>
+
+<!-- 13. 实用 Tips -->
+<section id="sec13">
+  <h2><span class="num">13</span>实用 Tips + 行前清单</h2>
+  <div class="sec-summary">免签 30 天、时差仅 1 小时、5 月旱季最佳、欧标插头。</div>
+  <div class="info-grid">
+    <div class="info-box"><h4>🛂 签证</h4><ul style="margin-left:16px"><li>中国护照免签 30 天</li><li>护照有效期 ≥ 6 个月</li><li>需填 <strong>All Indonesia</strong> 电子入境表</li></ul></div>
+    <div class="info-box"><h4>🌤️ 天气（5月旱季）</h4><ul style="margin-left:16px"><li>白天 30–32°C / 夜 22–24°C</li><li>降雨少，偶午后雷阵雨</li><li>日出 ~05:45 / 日落 ~18:00</li></ul></div>
+    <div class="info-box"><h4>💰 货币</h4><ul style="margin-left:16px"><li>IDR · 1 CNY ≈ 2,200 IDR</li><li>速算：去 3 零 ÷ 2 ≈ ¥</li><li>大店刷卡，小店现金</li></ul></div>
+    <div class="info-box"><h4>📱 通讯</h4><ul style="margin-left:16px"><li>Telkomsel 7天 5–10GB ~¥30–45</li><li>机场到达厅购买</li><li>必装：<strong>Grab</strong> + <strong>Google Maps</strong></li></ul></div>
+    <div class="info-box"><h4>⏰ 时差 & 电源</h4><ul style="margin-left:16px"><li>UTC+7，比北京晚 1h</li><li>220V/50Hz 欧标两圆孔</li><li>带 2–3 个转换器</li></ul></div>
+    <div class="info-box"><h4>🛡️ 安全</h4><ul style="margin-left:16px"><li>日惹治安良好</li><li>小费：行李员 IDR 10k–20k · 司机 IDR 50k–100k/天</li><li>紧急：110 报警 / 中国领保 +62-21-5764135</li></ul></div>
+  </div>
+  <h3>🗣️ 常用印尼语</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>中文</th><th>印尼语</th><th>中文</th><th>印尼语</th></tr></thead>
+    <tbody>
+      <tr><td>你好</td><td>Halo / Selamat pagi</td><td>谢谢</td><td>Terima kasih</td></tr>
+      <tr><td>多少钱</td><td>Berapa harganya?</td><td>太贵了</td><td>Terlalu mahal</td></tr>
+      <tr><td>不要辣</td><td>Tidak pedas</td><td>好吃</td><td>Enak</td></tr>
+      <tr><td>帮助</td><td>Tolong</td><td>再见</td><td>Selamat tinggal</td></tr>
+    </tbody>
+  </table></div>
+  <h3>✅ 行前清单</h3>
+  <div class="info-grid">
+    <div class="info-box"><h4>📄 证件 & 财物</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ 护照（6 个月+）+ 复印件 ×2</li>
+      <li>☐ 机票确认单 · 酒店预订单</li>
+      <li>☐ yogyakartatour D2 + D3 预订确认</li>
+      <li>☐ 旅游保险单</li>
+      <li>☐ 现金 ¥2,000–3,000 等值</li>
+      <li>☐ 信用卡 Visa/MC</li>
+    </ul></div>
+    <div class="info-box"><h4>📱 电子设备</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ 手机+充电器+充电宝</li>
+      <li>☐ <strong>欧标转换插头 ×2–3</strong></li>
+      <li>☐ 相机/GoPro（D3 天坑必备）</li>
+      <li>☐ 耳机</li>
+    </ul></div>
+    <div class="info-box"><h4>👕 衣物</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ 短袖 3–5 件 + <strong>速干衣</strong>（D3 天坑+海滩）</li>
+      <li>☐ <strong>长裤 ×2</strong>（寺庙+天坑）</li>
+      <li>☐ <strong>薄外套</strong>（D2 日出 ~20°C）</li>
+      <li>☐ <strong>运动鞋</strong>（D2 爬山+D3 天坑）</li>
+      <li>☐ 凉鞋/拖鞋（D3 海滩）· 泳衣 · 帽子 · 太阳镜</li>
+    </ul></div>
+    <div class="info-box"><h4>💊 洗护 & 药品</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ 防晒 SPF50+</li>
+      <li>☐ 防蚊液</li>
+      <li>☐ <strong>止泻药</strong> · 感冒药 · 创可贴</li>
+      <li>☐ <strong>口罩</strong>（D2 Merapi 防尘）</li>
+    </ul></div>
+    <div class="info-box"><h4>🎒 D3 专用</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ <strong>袜子</strong>（天坑速降必须）</li>
+      <li>☐ <strong>毛巾</strong></li>
+      <li>☐ <strong>换洗衣服</strong>（天坑+海滩后换）</li>
+      <li>☐ <strong>防水小包</strong></li>
+      <li>☐ <strong>拖鞋/凉鞋</strong>（海滩穿）</li>
+      <li>☐ <strong>防晒霜</strong>（下午海滩暴晒）</li>
+    </ul></div>
+    <div class="info-box"><h4>📲 出发前 To-Do</h4><ul style="margin-left:16px;list-style:none">
+      <li>☐ 下载 <strong>Grab</strong> + 绑定支付</li>
+      <li>☐ 下载 <strong>Google Maps</strong> 离线地图</li>
+      <li>☐ 填写 <strong>All Indonesia</strong> 入境表</li>
+      <li>☐ 确认 yogyakartatour D2 + D3 预订</li>
+      <li>☐ Klook 预订 D4 蜡染体验</li>
+      <li>☐ 购买旅游保险</li>
+    </ul></div>
+  </div>
+</section>
+
+</div><!-- /.container -->
+
+<footer>
+  <div class="container">
+    <p><strong>Selamat jalan!</strong> 祝旅途愉快 🌴✈️</p>
+    <p style="margin-top:8px">Author: yirenguo &nbsp;|&nbsp; v6 &nbsp;|&nbsp; 2026-03-31</p>
+    <p style="margin-top:4px;opacity:0.7">🟢 D0–D4 已锁定 · 🟡 D5 半天待安排</p>
+  </div>
+</footer>
+
+</body>
+</html>
