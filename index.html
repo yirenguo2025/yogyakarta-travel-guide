@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>日惹旅行手册 2026 | v5</title>
+<title>日惹旅行手册 2026 | v8</title>
 <style>
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
   html{font-size:15px;scroll-behavior:smooth}
@@ -58,8 +58,29 @@
   .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin:16px 0 24px}
   .info-box{background:#fff;border-radius:10px;padding:18px;border:1px solid #e5e0d8}
   .info-box h4{margin-top:0}
+  .spot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;margin:16px 0 24px}
+  .spot-card{background:#fff;border-radius:10px;padding:16px;border:1px solid #e5e0d8;transition:box-shadow .2s}
+  .spot-card:hover{box-shadow:0 3px 12px rgba(0,0,0,0.08)}
+  .spot-card .spot-name{font-size:0.95rem;font-weight:700;color:#1a5632;margin-bottom:4px}
+  .spot-card .spot-tag{display:inline-block;font-size:0.7rem;font-weight:600;padding:1px 7px;border-radius:3px;margin-right:4px;margin-bottom:4px}
+  .spot-card .spot-tag.famous{background:#e8f5e0;color:#2d8659}
+  .spot-card .spot-tag.hidden{background:#fff0e8;color:#c87533}
+  .spot-card .spot-desc{font-size:0.85rem;color:#555;line-height:1.65;margin-top:6px}
   footer{background:#1a5632;color:rgba(255,255,255,0.8);padding:32px 0;text-align:center;font-size:0.82rem;margin-top:40px}
   footer strong{color:#fff}
+  /* ── Side Navigation ── */
+  .side-nav{position:fixed;left:0;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:2px;padding:10px 0;background:rgba(26,86,50,0.92);border-radius:0 10px 10px 0;box-shadow:2px 2px 12px rgba(0,0,0,0.15);transition:width .25s ease;width:40px;overflow:hidden}
+  .side-nav:hover{width:180px}
+  .side-nav a{display:flex;align-items:center;gap:8px;padding:6px 10px;color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.78rem;white-space:nowrap;transition:all .2s;border-left:3px solid transparent}
+  .side-nav a:hover{color:#fff;background:rgba(255,255,255,0.12);border-left-color:#c87533}
+  .side-nav a.active{color:#fff;background:rgba(255,255,255,0.15);border-left-color:#c87533;font-weight:600}
+  .side-nav .dot{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.2);font-size:0.65rem;font-weight:700;flex-shrink:0;transition:background .2s}
+  .side-nav a.active .dot{background:#c87533}
+  .side-nav a:hover .dot{background:rgba(255,255,255,0.35)}
+  .side-nav .lbl{opacity:0;transition:opacity .2s}
+  .side-nav:hover .lbl{opacity:1}
+  @media print{.side-nav{display:none}}
+  @media(max-width:640px){.side-nav{display:none}}
   @media print{.toc-bar{display:none}.hero{padding:32px 20px}body{font-size:13px}section{break-inside:avoid}}
   @media(max-width:640px){.hero h1{font-size:1.8rem}.info-grid{grid-template-columns:1fr}table{font-size:0.82rem}thead th,tbody td{padding:7px 10px}}
 </style>
@@ -69,25 +90,25 @@
 <div class="hero">
   <h1>🌴 日惹旅行手册</h1>
   <div class="subtitle">Yogyakarta · 2026年4月30日–5月5日 · 6天5晚</div>
-  <div class="meta">Author: yirenguo &nbsp;|&nbsp; v5 &nbsp;|&nbsp; 2026-03-31 &nbsp;|&nbsp; 🟢 已确定 6 项 · 🟡 待确定 1 项（仅 D5 半天）</div>
+  <div class="meta">Author: yirenguo &nbsp;|&nbsp; v8 &nbsp;|&nbsp; 2026-04-07</div>
 </div>
 
 <nav class="toc-bar">
   <div class="container">
     <a href="#sec1">行程总览</a>
-    <a href="#sec2">✅ 机票</a>
-    <a href="#sec3">✅ 酒店</a>
-    <a href="#sec4">✅ D0 出发</a>
-    <a href="#sec5">✅ D1 市区</a>
-    <a href="#sec6">✅ D2 遗产+火山</a>
-    <a href="#sec7">✅ D3 天坑+海滩</a>
-    <a href="#sec8">✅ D4 文化</a>
-    <a href="#sec9">💡 D5 返程</a>
-    <a href="#sec10">景点预约</a>
-    <a href="#sec11">交通</a>
-    <a href="#sec12">餐饮</a>
-    <a href="#sec12b">🍽️ 餐食待办</a>
-    <a href="#sec13">实用Tips</a>
+    <a href="#sec2">机票</a>
+    <a href="#sec3">酒店</a>
+    <a href="#sec4">D0 出发</a>
+    <a href="#sec5">D1 市区</a>
+    <a href="#sec6">D2 遗产+火山+舞剧</a>
+    <a href="#sec7">D3 天坑+海滩</a>
+    <a href="#sec8">D4 文化</a>
+    <a href="#sec9">D5 返程</a>
+    <a href="#sec10">文化指南</a>
+    <a href="#sec11">景点预约</a>
+    <a href="#sec12">交通</a>
+    <a href="#sec13">餐饮</a>
+    <a href="#sec14">实用Tips</a>
   </div>
 </nav>
 
@@ -96,26 +117,26 @@
 <!-- 1. 行程总览 -->
 <section id="sec1">
   <h2><span class="num">1</span>行程总览</h2>
-  <div class="sec-summary">绿色 = 已确定并预订，橙色 = 待讨论。行程已基本定型，仅 D5 半天待安排。</div>
+  <div class="sec-summary">6天5晚完整行程纵览。D5 半天三选一可 D4 晚上再决定。</div>
   <div class="table-wrap"><table>
-    <thead><tr><th>日期</th><th>住宿</th><th>主题</th><th>核心内容</th><th>状态</th></tr></thead>
+    <thead><tr><th>日期</th><th>住宿</th><th>主题</th><th>核心内容</th></tr></thead>
     <tbody>
-      <tr style="background:#f0faf0"><td><strong>D0</strong> 4/30 (三)</td><td>✈️ 飞行</td><td>出发</td><td>HKG 09:40→CGK→YIA 17:20 · Malioboro 夜市</td><td><span class="badge confirmed">已确定</span></td></tr>
-      <tr style="background:#f0faf0"><td><strong>D1</strong> 5/1 (四)</td><td>🏨 Phoenix</td><td>市区文化</td><td>皇宫 · 水宫 · Prawirotaman · Malioboro 夜市</td><td><span class="badge confirmed">已确定</span></td></tr>
-      <tr style="background:#f0faf0"><td><strong>D2</strong> 5/2 (五)</td><td>🏨 Phoenix</td><td>遗产+火山</td><td>Setumbu 日出→婆罗浮屠→Merapi Lava→普兰巴南</td><td><span class="badge confirmed">已确定</span></td></tr>
-      <tr style="background:#f0faf0"><td><strong>D3</strong> 5/3 (六)</td><td>🏨 Phoenix</td><td>天坑+海滩</td><td>Jomblang Cave 天坑 + Timang Beach 吉普+缆车</td><td><span class="badge confirmed">已确定</span></td></tr>
-      <tr style="background:#f0faf0"><td><strong>D4</strong> 5/4 (日)</td><td>🏨 Phoenix</td><td>文化体验</td><td>蜡染体验 + 甘美兰音乐 + Sonobudoyo 皮影戏</td><td><span class="badge confirmed">已确定</span></td></tr>
-      <tr><td><strong>D5</strong> 5/5 (一)</td><td>✈️ 返程</td><td>回家</td><td>半天自由→YIA 18:05→次日 05:45 抵港</td><td><span class="badge pending">待确定</span></td></tr>
+      <tr><td><strong>D0</strong> 4/30 (四)</td><td>✈️ 飞行</td><td>出发</td><td>HKG 09:40→CGK→YIA 17:20 · Malioboro 夜市</td></tr>
+      <tr><td><strong>D1</strong> 5/1 (五)</td><td>🏨 Phoenix</td><td>市区文化</td><td>皇宫 · 水宫 · Prawirotaman · Malioboro</td></tr>
+      <tr><td><strong>D2</strong> 5/2 (六)</td><td>🏨 Phoenix</td><td>遗产+火山+舞剧</td><td>Setumbu 日出→婆罗浮屠→Merapi→普兰巴南→🎭 Ramayana Ballet</td></tr>
+      <tr><td><strong>D3</strong> 5/3 (日)</td><td>🏨 Phoenix</td><td>天坑+海滩</td><td>Jomblang Cave 天坑 + Timang Beach 吉普+缆车</td></tr>
+      <tr><td><strong>D4</strong> 5/4 (一)</td><td>🏨 Phoenix</td><td>文化体验</td><td>甘美兰 09:00 + 蜡染 11:00 + Sonobudoyo 皮影戏 20:00</td></tr>
+      <tr><td><strong>D5</strong> 5/5 (二)</td><td>✈️ 返程</td><td>回家</td><td>半天自由（三选一）→YIA 18:05→次日 05:45 抵港</td></tr>
     </tbody>
   </table></div>
 </section>
 
 <!-- 2. 机票 -->
 <section id="sec2">
-  <h2><span class="num">2</span>✅ 已确定 · 往返机票</h2>
+  <h2><span class="num">2</span>往返机票</h2>
   <div class="sec-summary">印尼鹰航 Garuda Indonesia，香港经雅加达转机，全程含餐含托运行李。</div>
-  <div class="status-card locked">
-    <div class="card-header"><span class="badge confirmed">已购票</span><span class="card-title">去程 · 4月30日（周三）</span></div>
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">去程 · 4月30日（周四）</span></div>
     <div class="card-body">
       <div class="table-wrap" style="margin-top:0"><table>
         <thead><tr><th>航段</th><th>航班</th><th>机型</th><th>起飞</th><th>到达</th><th>飞行</th></tr></thead>
@@ -128,8 +149,8 @@
       <p style="margin-top:8px">抵达日惹 <strong>17:20</strong>，可赶上晚餐和 Malioboro 夜市。</p>
     </div>
   </div>
-  <div class="status-card locked">
-    <div class="card-header"><span class="badge confirmed">已购票</span><span class="card-title">回程 · 5月5日（周一）</span></div>
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">回程 · 5月5日（周二）</span></div>
     <div class="card-body">
       <div class="table-wrap" style="margin-top:0"><table>
         <thead><tr><th>航段</th><th>航班</th><th>机型</th><th>起飞</th><th>到达</th><th>飞行</th></tr></thead>
@@ -147,10 +168,10 @@
 
 <!-- 3. 酒店 -->
 <section id="sec3">
-  <h2><span class="num">3</span>✅ 已确定 · 酒店</h2>
+  <h2><span class="num">3</span>酒店</h2>
   <div class="sec-summary">The Phoenix Hotel Yogyakarta - MGallery，Malioboro 街核心位置，1918年殖民历史建筑。</div>
-  <div class="status-card locked">
-    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">The Phoenix Hotel Yogyakarta - MGallery</span></div>
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">The Phoenix Hotel Yogyakarta - MGallery</span></div>
     <div class="card-body">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
         <div>
@@ -177,10 +198,10 @@
 
 <!-- 4. D0 出发 -->
 <section id="sec4">
-  <h2><span class="num">4</span>✅ D0 · 出发日（4月30日）</h2>
+  <h2><span class="num">4</span>D0 · 出发日（4月30日）</h2>
   <div class="sec-summary">白天飞行，17:20 抵达日惹，入住后 Malioboro 夜市初体验。</div>
   <div class="timeline"><div class="timeline-item">
-    <div class="day-tag">D0 · 4月30日（周三）</div>
+    <div class="day-tag">D0 · 4月30日（周四）</div>
     <div class="day-title">出发 · 傍晚抵达</div>
     <div class="day-detail"><ul>
       <li><strong>07:00</strong>：到达香港机场</li>
@@ -193,20 +214,33 @@
       <li><strong>22:00</strong>：回酒店休息</li>
     </ul></div>
   </div></div>
+  <h3>📸 D0 精彩观光点</h3>
+  <div class="spot-grid">
+    <div class="spot-card">
+      <div class="spot-name">🌃 Malioboro 夜市</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">日惹的心脏——入夜后路边摊云集，Nasi Kucing（猫饭）、Coffee Joss（炭火咖啡）、Bakmi Jawa（爪哇炒面）一条街吃到撑。街头卖艺人弹吉他唱歌，Becak 三轮车穿行，是感受日惹烟火气的第一站。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🎡 Alun-Alun Kidul 南广场</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">皇宫正南方的大广场，晚上变身霓虹游乐场——租一辆 LED 闪光脚踏车（Hello Kitty、小黄人造型）绕场兜风（IDR 40k），体验最接地气的印尼家庭夜生活。传说闭眼从两棵大榕树之间走过去能带来好运！</div>
+    </div>
+  </div>
 </section>
 
 <!-- 5. D1 市区 -->
 <section id="sec5">
-  <h2><span class="num">5</span>✅ D1 · 市区文化（5月1日）</h2>
+  <h2><span class="num">5</span>D1 · 市区文化（5月1日）</h2>
   <div class="sec-summary">自由探索日惹市区：皇宫 · 水宫 · Prawirotaman 文艺区 · Malioboro 夜市。休闲节奏。</div>
   <div class="timeline"><div class="timeline-item">
-    <div class="day-tag">D1 · 5月1日（周四）</div>
+    <div class="day-tag">D1 · 5月1日（周五）</div>
     <div class="day-title">市区文化探索日</div>
     <div class="day-detail"><ul>
       <li><strong>08:00–09:00</strong>：酒店早餐</li>
       <li><strong>09:30–11:00</strong>：<strong>日惹皇宫 Kraton</strong>（步行 15min）— 苏丹王宫，~¥7</li>
       <li><strong>11:00–12:00</strong>：<strong>水宫 Taman Sari</strong>（步行 5min）— 皇家花园，~¥7</li>
-      <li><strong>12:00–13:30</strong>：午餐 — <strong>Bale Raos 宫廷料理</strong>（皇宫内，人均 ¥50–100）</li>
+      <li><strong>12:00–13:30</strong>：午餐 — <strong>Bale Raos 宫廷料理</strong>（已预订 12:00 · WhatsApp · 皇宫内，人均 ¥50–100）</li>
       <li><strong>14:00–15:30</strong>：酒店午休 / 泳池</li>
       <li><strong>15:30–17:00</strong>：<strong>Prawirotaman 文艺区</strong> — 咖啡馆、独立书店（Grab 10min）</li>
       <li><strong>17:00–18:00</strong>：<strong>Beringharjo 市场</strong> — 蜡染布、香料</li>
@@ -215,18 +249,51 @@
     </ul></div>
   </div></div>
   <div class="callout"><strong>⏰ D1 注意：</strong><ul style="margin:6px 0 0 18px">
-    <li>皇宫 Kraton：周二–日 08:30–14:00（周一休），5/1 周四正常</li>
+    <li>皇宫 Kraton：周二–日 08:30–14:00（周一休），5/1 周五正常</li>
     <li>水宫 Taman Sari：每天 09:00–15:00</li>
     <li><strong>晚上务必早睡！D2 需 03:00 起床，03:45 大堂集合！</strong></li>
   </ul></div>
+  <h3>📸 D1 精彩观光点</h3>
+  <div class="spot-grid">
+    <div class="spot-card">
+      <div class="spot-name">🏛️ 日惹皇宫 Kraton</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">至今仍有苏丹居住的活皇宫——全印尼唯一。18世纪爪哇建筑的精华，Pendopo（开放式大殿）里偶尔能遇到宫廷侍从穿传统服饰值班。周日上午还有免费甘美兰演奏和传统舞蹈表演。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">💧 水宫 Taman Sari</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">18世纪苏丹的皇家花园+浴场——粉色墙壁×蓝绿色水池，曾有人工湖泊和水下隧道的庞大建筑群。如今只剩浴场核心区，但拱门和水池的光影极其出片。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🕌 地下清真寺 Sumur Gumuling</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">水宫步行 5 分钟，藏在居民区巷弄深处的圆形地下清真寺。曾通过隧道与水宫相连，二层环形回廊+中央天井结构极其独特。Google Maps 在这片区域不太靠谱，多问居民比导航管用。门票含在水宫票内。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🏰 Fort Vredeburg 弗雷德堡</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">Malioboro 街尽头的荷兰殖民堡垒，后为日军总部和战犯监狱。现为博物馆，用精美立体模型讲述印尼独立斗争史。门票仅 IDR 10k，游客极少，屋顶可拍 Malioboro 全景。周一闭馆。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🎨 Prawirotaman 文艺区</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">日惹的"文艺青年街区"——独立咖啡馆、精酿酒吧、二手书店、街头涂鸦墙。和 Malioboro 的游客喧嚣完全不同的氛围，是日惹年轻人和背包客的聚集地。Via Via Cafe 的印尼拼盘很有名。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🛍️ Beringharjo 市场</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">Malioboro 街上的百年传统市场——室内是蜡染布和香料的海洋，价格比街边摊便宜一半；室外区有旧货古董和五金杂货，烟火气十足。二楼藏着当地人才知道的 Bakmi 面摊和 Wedang Ronde（姜汤汤圆）。</div>
+    </div>
+  </div>
 </section>
 
-<!-- 6. D2 双遗产+火山 -->
+<!-- 6. D2 双遗产+火山+舞剧 -->
 <section id="sec6">
-  <h2><span class="num">6</span>✅ D2 · 双遗产+火山（5月2日）</h2>
-  <div class="sec-summary">yogyakartatour 包团 · Setumbu 日出→婆罗浮屠→Merapi Lava Tour→普兰巴南 · 升级版 $110/人（申请中）· 03:45–15:30</div>
-  <div class="status-card locked">
-    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">Borobudur Sunrise + Merapi Lava + Prambanan（升级版）</span></div>
+  <h2><span class="num">6</span>D2 · 双遗产+火山+舞剧（5月2日）</h2>
+  <div class="sec-summary">白天 yogyakartatour 包团 03:45–15:30 · 晚上 🎭 Ramayana Ballet 19:30–21:30。升级版 $110/人。全程最充实的一天！<br>📂 <strong>预订来源</strong>：yogyakartatour.com · 确认信息见 Outlook 邮箱</div>
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">Borobudur Sunrise + Merapi Lava + Prambanan（升级版）</span></div>
     <div class="card-body">
       <h4 style="margin-top:4px;color:#1a5632">🌅 完整行程</h4>
       <div class="table-wrap"><table>
@@ -259,20 +326,91 @@
       <ul><li>酒店·正餐·个人消费</li></ul>
     </div>
   </div>
+
+  <!-- Ramayana Ballet -->
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">🎭 Ramayana Ballet · 普兰巴南露天剧场（5/2 晚）</span></div>
+    <div class="card-body">
+      <div class="table-wrap" style="margin-top:0"><table>
+        <thead><tr><th>时间</th><th>内容</th></tr></thead>
+        <tbody>
+          <tr><td><strong>15:30–17:00</strong></td><td>🏨 回酒店休息/简餐</td></tr>
+          <tr><td><strong>~18:30</strong></td><td>🚗 出发前往普兰巴南（与 D2 司机沟通接送）</td></tr>
+          <tr><td><strong>19:00</strong></td><td>📸 提前到场，拍普兰巴南夜景</td></tr>
+          <tr><td><strong>19:30–21:30</strong></td><td>🎭 <strong>Ramayana Ballet 露天演出</strong>（Open Air Theatre，灯光照亮的普兰巴南为背景）</td></tr>
+          <tr><td><strong>~22:00</strong></td><td>🚗 返回酒店</td></tr>
+        </tbody>
+      </table></div>
+      <h4 style="color:#1a5632">🎫 购票信息</h4>
+      <ul>
+        <li><strong>官网购票</strong>：<a href="https://ticket.borobudurpark.com/en/ramayana-ballet-prambanan/tickets/?cat=ramayana-ballet" target="_blank">ticket.borobudurpark.com</a></li>
+        <li><strong>推荐座位</strong>：Special（₹350k ≈ ¥155/人，正面对号入座+赠饮）或 VIP（₹450k ≈ ¥200/人，+传统小吃）</li>
+        <li><strong>⚠️ VIP 仅 64 座，Special 仅 130 座</strong>，5月旱季周六极热门，务必尽早购买！</li>
+        <li>5月为旱季→<strong>露天 Open Air Theatre</strong>，以普兰巴南寺庙群为实景背景，最震撼版本</li>
+      </ul>
+      <div class="callout red" style="margin-top:12px"><strong>📋 TODO：</strong>官网 5 月票一旦开卖，<strong>立即购买 5/2 周六 Special 或 VIP 座位</strong>（2 张）。晚间接送与 D2 包团司机沟通安排。</div>
+    </div>
+  </div>
+
   <div class="callout"><strong>⏰ D2 提醒：</strong><ul style="margin:6px 0 0 18px">
     <li><strong>前一晚早睡！</strong>闹钟设 03:00，03:45 大堂集合</li>
     <li>着装：长裤+运动鞋+<strong>薄外套</strong>（山顶 ~20°C）+<strong>口罩</strong>（Merapi 灰尘大）</li>
     <li>携带：手电筒·相机·水·防蚊液·太阳镜·零食</li>
-    <li>全天 ~12h，比较辛苦。15:30 回酒店后好好休息</li>
+    <li>白天 ~12h 一日游 + 晚上舞剧，<strong>全程最辛苦的一天</strong></li>
+    <li>15:30 回酒店后抓紧休息+简餐，18:30 再出发看舞剧</li>
+    <li>跟 D2 司机提前说好：晚上需接送去普兰巴南 Ramayana Ballet</li>
   </ul></div>
+  <h3>📸 D2 精彩观光点</h3>
+  <div class="spot-grid">
+    <div class="spot-card">
+      <div class="spot-name">🌅 Punthuk Setumbu 日出</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">清晨 4:30 登顶，5:00 前后天际线渐亮——婆罗浮屠的轮廓从晨雾中浮现，背后是默拉皮火山锥体。全世界最壮观的日出之一。带手电筒和薄外套（山顶 ~20°C）。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🏛️ 婆罗浮屠 Borobudur</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">世界最大佛教遗址（UNESCO）——9世纪建造，共 10 层，2672 块浮雕讲述佛陀生平和轮回故事。顶部 72 座钟形佛塔+中央大佛塔代表涅槃。建议跟导游走一圈浮雕回廊，否则很容易错过精彩细节。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🛕 Candi Pawon 帕翁寺</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">婆罗浮屠和 Mendut 寺之间的"小宝石"——与婆罗浮屠同时期建造的袖珍佛教寺庙，精美的浮雕刻有天界乐师和许愿树。游客极少，可以独享宁静。司机经过时让他停一下即可。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🌋 Merapi Lava Tour</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">吉普车穿越 2010 年大喷发的熔岩遗迹——被火山灰掩埋的村庄、扭曲的铁皮屋顶、凝固的岩浆河道。Kaliadem 废墟和火山博物馆讲述了火山如何在 5 分钟内吞噬整个社区。震撼且沉重。口罩必备！</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🕉️ 普兰巴南 Prambanan</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">东南亚最大印度教寺庙群（UNESCO）——主塔高 47m，三座主殿分别供奉湿婆、毗湿奴、梵天。内壁浮雕完整讲述了印度史诗《罗摩衍那》的故事，晚上的 Ramayana Ballet 就是这个故事的舞剧版。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🛕 Candi Sewu 千庙</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">普兰巴南公园内步行 15 分钟的佛教寺庙群——名字意为"千座寺庙"（实际 249 座），与印度教的普兰巴南同一公园内共存，体现了古爪哇宗教包容。联票已含，但 90% 的游客不会走到这里。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🛕 Candi Plaosan 普拉奥桑寺</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">普兰巴南东北 2km 的隐藏宝藏——由佛教和印度教元素融合的独特建筑群（Plaosan Lor 北+Plaosan Kidul 南）。精致雕刻堪比普兰巴南但几乎无人，稻田环绕，氛围绝佳。公园外需单独进入，门票 IDR 10k。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🎭 Ramayana Ballet</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">以灯光照亮的普兰巴南为实景背景的露天史诗舞剧——200 名舞者演绎《罗摩衍那》：王子罗摩救妻悉达的英雄传说。5月旱季为 Open Air 版，全年最震撼。Special/VIP 座位正面对号入座。</div>
+    </div>
+  </div>
 </section>
 
 <!-- 7. D3 天坑+海滩 -->
 <section id="sec7">
-  <h2><span class="num">7</span>✅ D3 · 天坑+海滩（5月3日）</h2>
-  <div class="sec-summary">yogyakartatour 包团 · Jomblang Cave 天坑速降 + Timang Beach 4×4 吉普 &amp; 缆车登岛 · 含午餐 · 07:00–17:30</div>
-  <div class="status-card locked">
-    <div class="card-header"><span class="badge confirmed">已预订</span><span class="card-title">Jomblang Cave + Timang Beach Tour</span></div>
+  <h2><span class="num">7</span>D3 · 天坑+海滩（5月3日）</h2>
+  <div class="sec-summary">yogyakartatour 包团 · Jomblang Cave 天坑速降 + Timang Beach 4×4 吉普 &amp; 缆车登岛 · 含午餐 · 07:00–17:30（周日）<br>📂 <strong>预订来源</strong>：yogyakartatour.com · 确认信息见 Outlook 邮箱</div>
+  <div class="status-card">
+    <div class="card-header"><span class="card-title">Jomblang Cave + Timang Beach Tour</span></div>
     <div class="card-body">
       <h4 style="margin-top:4px;color:#1a5632">🕳️🏖️ 完整行程</h4>
       <div class="table-wrap"><table>
@@ -317,60 +455,87 @@
     <li>可选加购龙虾套餐（$50/4人），性价比极高</li>
     <li>17:30 回酒店后建议简单吃晚餐+休息</li>
   </ul></div>
+  <h3>📸 D3 精彩观光点</h3>
+  <div class="spot-grid">
+    <div class="spot-card">
+      <div class="spot-name">🕳️ Jomblang Cave "天堂之光"</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">绳降 60 米进入垂直天坑，穿越漆黑地下河道，最终抵达 Grubug Hall——10:00–12:00 阳光穿过洞口直射洞底，形成一道金色光柱照亮绿色苔藓地面。这就是传说中的"天堂之光"（Heaven's Light）。一生必看。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🏖️ Timang Beach 缆车</div>
+      <span class="spot-tag famous">经典</span>
+      <div class="spot-desc">Gunung Kidul 最狂野的海滩——先坐 4×4 吉普穿越崎岖山路抵达海崖，然后乘坐<strong>人力手拉缆车</strong>横跨汹涌海面到达 Timang Island。印度洋巨浪在脚下炸开。肾上腺素飙升但绝对安全。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🌊 Gunung Kidul 石灰岩海岸线</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">Timang Beach 所在的 Gunung Kidul 是日惹最壮观的海岸线——连绵的白色石灰岩悬崖与碧蓝印度洋形成鲜明对比。沿途的 Wediombo、Siung、Ngrenehan 等海滩各有特色，但大多数游客只去 Timang 一个。车上留意沿途风光！</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🌿 Jomblang 地下生态系统</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">别光顾着拍光柱——Jomblang Cave 是一个封闭了百万年的垂直塌陷天坑，洞底形成了独立的热带雨林生态系统。抬头看洞口的蕨类植物剪影、脚下的钟乳石和暗河，这是地质学的活教科书。向导会讲解石灰岩溶蚀过程。</div>
+    </div>
+    <div class="spot-card">
+      <div class="spot-name">🦞 Timang Island 龙虾</div>
+      <span class="spot-tag hidden">小众</span>
+      <div class="spot-desc">缆车登上 Timang Island 后，岛上渔民现捞现烤龙虾——$50/4人 的龙虾套餐是这条线路的隐藏彩蛋。坐在悬崖边吃着刚出水的龙虾看印度洋，这种体验没有第二个地方能复制。可以跟司机提前说要加购。</div>
+    </div>
+  </div>
 </section>
 
 <!-- 8. D4 文化体验 -->
 <section id="sec8">
-  <h2><span class="num">8</span>✅ D4 · 文化体验日（5月4日）</h2>
-  <div class="sec-summary">最轻松的一天：蜡染手工+甘美兰音乐+皮影戏。市区内活动，D2+D3 高强度后充分恢复。</div>
+  <h2><span class="num">8</span>D4 · 文化体验日（5月4日）</h2>
+  <div class="sec-summary">最轻松的一天：甘美兰 09:00 + 蜡染 14:00 + 皮影戏 20:00。市区内活动，D2+D3 后充分恢复。<br>📂 <strong>预订来源</strong>：甘美兰+蜡染 → Klook 已购 · 皮影戏 → 现场购票</div>
   <div class="timeline"><div class="timeline-item">
-    <div class="day-tag">D4 · 5月4日（周日）</div>
+    <div class="day-tag">D4 · 5月4日（周一）</div>
     <div class="day-title">爪哇文化深度体验日</div>
     <div class="day-detail"><ul>
-      <li><strong>08:00–09:30</strong>：酒店早餐+休整</li>
-      <li><strong>10:00–12:30</strong>：🎨 <strong>蜡染体验 Batik Workshop</strong>（Klook 预订）— 画蜡→染色→成品带走，~2.5h，~¥90–180/人</li>
-      <li><strong>12:30–14:00</strong>：午餐 — <strong>The House of Raminten</strong>（传统爪哇，三层建筑+传统服饰服务员，¥40–80）</li>
-      <li><strong>14:00–15:00</strong>：酒店休息/泳池</li>
-      <li><strong>15:30–17:00</strong>：🎵 <strong>甘美兰 Gamelan 体验</strong> — 爪哇传统打击乐合奏，~¥90–150/人</li>
-      <li><strong>17:00–18:30</strong>：Malioboro 最后购物+伴手礼（Bakpia Pathok 25 + 蜡染布）</li>
-      <li><strong>19:00–19:30</strong>：晚餐</li>
-      <li><strong>20:00–21:30</strong>：🎭 <strong>Sonobudoyo 皮影戏</strong> — 每晚 20:00，正宗爪哇皮影，联合国非遗，仅 ~¥15–25/人</li>
+      <li><strong>08:00–08:30</strong>：酒店早餐</li>
+      <li><strong>09:00–12:00</strong>：🎵 <strong>爪哇舞蹈 &amp; 甘美兰 Gamelan 体验</strong>（Klook 已购）
+        <br><span style="font-size:0.82rem;color:#888">📍 甘美兰工坊 · 2×成人（2人或以上成团） · 09:00 开始 · 预留 3h</span></li>
+      <li><strong>12:00–13:30</strong>：午餐（甘美兰工坊附近 或 Grab 前往 Kotagede 区沿途解决）</li>
+      <li><strong>~13:30</strong>：🚗 Grab 前往蜡染工坊（~15–20min）</li>
+      <li><strong>14:00–17:00</strong>：🎨 <strong>蜡染体验 Batik Workshop</strong>（Klook 已购） — 完整传统蜡染+天然染色，成品带走
+        <br><span style="font-size:0.82rem;color:#888">📍 Abhati Studio, Kotagede 区 · 2×成人 · 14:00 开始 · 预留 3h</span></li>
+      <li><strong>17:00–17:30</strong>：从 Kotagede 回酒店（Grab ~15min）</li>
+      <li><strong>17:30–18:30</strong>：酒店休息整理</li>
+      <li><strong>19:00–19:45</strong>：晚餐（选 Malioboro/酒店附近，快速解决）</li>
+      <li><strong>20:00–21:30</strong>：🎭 <strong>Sonobudoyo 皮影戏</strong>（现场购票）— 每晚 20:00，正宗爪哇皮影，联合国非遗，~¥15–25/人</li>
       <li><strong>22:00</strong>：回酒店</li>
     </ul></div>
   </div></div>
+
+
   <div class="callout green"><strong>🎯 D4 推荐：</strong><ul style="margin:6px 0 0 18px">
     <li>特意安排低体力文化活动，D2+D3 后恢复</li>
     <li>蜡染成品是独一无二的纪念品</li>
     <li>皮影戏联合国非遗，日惹最正宗，票价极低不可错过</li>
   </ul></div>
-  <div class="callout"><strong>📋 D4 预订：</strong><ul style="margin:6px 0 0 18px">
-    <li><strong>蜡染体验</strong>：出发前在 Klook 搜索 "Batik Yogyakarta" 预订</li>
-    <li><strong>甘美兰</strong>：到日惹后通过酒店前台或 Klook 预订</li>
-    <li><strong>皮影戏</strong>：Sonobudoyo 博物馆每晚演出，无需提前预约，现场买票</li>
-    <li><strong>The House of Raminten</strong>：热门餐厅，建议提前 1 天致电预订</li>
-  </ul></div>
 </section>
 
 <!-- 9. D5 返程 -->
 <section id="sec9">
-  <h2><span class="num">9</span>💡 D5 · 返程日（5月5日）</h2>
-  <div class="sec-summary">航班 18:05，白天充裕。11:00 退房寄存行李，15:30 出发去机场。半天自由时间待安排。</div>
-  <div class="timeline"><div class="timeline-item pending-item">
-    <div class="day-tag">D5 · 5月5日（周一）· 待确定</div>
-    <div class="day-title">自由半天 + 傍晚返程</div>
+  <h2><span class="num">9</span>D5 · 返程日（5月5日）</h2>
+  <div class="sec-summary">航班 18:05，白天充裕。11:00 退房寄存行李，15:30 出发去机场。半天自由时间三选一。</div>
+  <div class="timeline"><div class="timeline-item">
+    <div class="day-tag">D5 · 5月5日（周二）· 三选一 D4 晚决定</div>
+    <div class="day-title">自由半天 + 告别午餐 + 傍晚返程</div>
     <div class="day-detail"><ul>
       <li><strong>07:30–09:00</strong>：最后一顿酒店早餐</li>
       <li><strong>09:00–11:00</strong>：半天自由活动（见下方选项）</li>
       <li><strong>11:00</strong>：退房，行李寄存前台</li>
-      <li><strong>11:00–14:00</strong>：轻装继续逛
+      <li><strong>11:00–13:00</strong>：轻装继续逛
         <ul>
           <li>选项 A：<strong>Kota Gede 银器村</strong>（Grab 15min，银器作坊）</li>
           <li>选项 B：<strong>Prambanan 周边小寺 Sewu / Plaosan</strong></li>
           <li>选项 C：<strong>Malioboro 最后一逛+伴手礼</strong></li>
         </ul>
       </li>
-      <li><strong>14:00–15:00</strong>：最后午餐</li>
-      <li><strong>15:00–15:30</strong>：回酒店取行李</li>
+      <li><strong>13:00–14:30</strong>：告别午餐 — <strong>Mediterranea</strong>（地中海+印尼融合，花园庭院，人均 ¥50–100）</li>
+      <li><strong>14:30–15:00</strong>：回酒店取行李</li>
       <li><strong>15:30</strong>：Grab 出发去 YIA（~50min）</li>
       <li><strong>16:20</strong>：到达机场值机</li>
       <li><strong>18:05</strong>：YIA→CGK GA 203</li>
@@ -378,43 +543,186 @@
       <li><strong>23:50</strong>：CGK→HKG GA 860 → 次日 <strong>05:45</strong> 抵港</li>
     </ul></div>
   </div></div>
-  <div class="callout green"><strong>🎉 D5 时间充裕：</strong>航班 18:05，15:30 出发即可，<strong>白天 6+h 自由时间</strong>。可补去没去的地方或悠闲二刷。</div>
+  <div class="callout green"><strong>🎉 D5 时间充裕：</strong>航班 18:05，15:30 出发即可，<strong>白天 6+h 自由时间</strong>。Mediterranea 作为 farewell lunch，花园庭院里为日惹之旅画上完美句号。</div>
 </section>
 
-<!-- 10. 景点预约 -->
+<!-- 文化指南 -->
 <section id="sec10">
-  <h2><span class="num">10</span>景点门票 + 预约指南</h2>
-  <div class="sec-summary">D2、D3 门票已全含在包团中。D4 蜡染+甘美兰需 Klook 预订，皮影戏现场买票。D3 可选加购龙虾套餐。</div>
+  <h2><span class="num">10</span>文化指南 · 看懂日惹</h2>
+  <div class="sec-summary">行前必读——了解你看到的每一块石头、每一段旋律、每一幅蜡染背后的故事。这一章帮助你从"到此一游"升级为"真正理解"。</div>
+
+  <h3>🗺️ 日惹：爪哇文明的心脏</h3>
+  <p>日惹（Yogyakarta，当地人叫 Jogja）不只是一座城市——它是<strong>爪哇文明延续至今的活化石</strong>。理解日惹，需要知道三个时间层：</p>
+
+  <h4>🔹 第一层：印度教-佛教王国时代（8–10世纪）</h4>
+  <p>公元 8–9 世纪，中爪哇同时存在两个强大王朝：信奉<strong>大乘佛教</strong>的<strong>夏连特拉王朝</strong>（Sailendra）和信奉<strong>印度教</strong>的<strong>桑贾亚王朝</strong>（Sanjaya / 旧马塔兰王国）。两个王朝通过联姻维持着微妙平衡：</p>
+  <ul>
+    <li><strong>夏连特拉</strong>建造了<strong>婆罗浮屠</strong>（约 780–830 年），这是大乘佛教宇宙观的石头史诗</li>
+    <li><strong>桑贾亚</strong>建造了<strong>普兰巴南</strong>（约 850 年），这是印度教三位一体神的最高殿堂</li>
+    <li>两座世界级建筑<strong>相距仅 40 公里</strong>，建造时间仅差约 50 年——这在全世界都是独一无二的奇迹</li>
+  </ul>
+  <p>有趣的是，普兰巴南公园内同时存在佛教的 Candi Sewu（千庙）和印度教的主庙群，体现了古爪哇<strong>宗教并存与包容</strong>的传统——这一传统延续到了今天（印尼是全球最大的穆斯林国家，但日惹的印度教、佛教寺庙依然香火不断）。</p>
+  <p>约 10 世纪初，可能因默拉皮火山喷发和政治中心东移，这些伟大建筑被火山灰和热带丛林掩埋，沉睡了近 800 年。</p>
+
+  <h4>🔹 第二层：伊斯兰苏丹国时代（16世纪至今）</h4>
+  <p><strong>马塔兰伊斯兰苏丹国</strong>（Mataram Sultanate）16 世纪统一爪哇大部分地区。1755 年，在荷兰殖民势力介入下，王国一分为二——日惹苏丹国（由 Hamengkubuwono 一世建立）和梭罗王国（Surakarta）。</p>
+  <p><strong>日惹苏丹 Hamengkubuwono 一世</strong>按照爪哇宇宙观设计了整座城市：以<strong>默拉皮火山</strong>（北，神圣之山）和<strong>南海</strong>（南，海洋女神 Ratu Kidul 的领地）为轴线，<strong>皇宫 Kraton</strong> 坐落在轴线正中——象征苏丹是天地之间的调和者。这条宇宙轴线（Cosmological Axis）在 2023 年被列入 <strong>UNESCO 世界遗产</strong>。</p>
+  <p>至今日惹仍有苏丹——<strong>Hamengkubuwono X</strong>（第十世苏丹）同时担任日惹特区省长，是<strong>全印尼唯一仍有实权的传统统治者</strong>。皇宫里至今有宫廷侍从（Abdi Dalem）穿着传统蜡染服饰值班。</p>
+
+  <h4>🔹 第三层：独立革命（1945–1949）</h4>
+  <p>1945年印尼宣布独立后，荷兰试图重新殖民。<strong>日惹在 1946–1949 年间担任印尼共和国临时首都</strong>——苏丹 Hamengkubuwono IX 果断站在共和国一方，用皇宫保护印尼政府。这段历史奠定了日惹在印尼人心中的特殊地位，也是它至今享有"特区"地位的原因。Fort Vredeburg 博物馆（D1 经过）详细展示了这段历史。</p>
+
+  <h3>🏛️ 婆罗浮屠 Borobudur · 石头里的佛教宇宙</h3>
+  <p><strong>建造时间</strong>：约 780–830 年（夏连特拉王朝）&nbsp;&nbsp;|&nbsp;&nbsp;<strong>UNESCO</strong>：1991 年列入&nbsp;&nbsp;|&nbsp;&nbsp;<strong>你会在 D2 上午参观</strong></p>
+
+  <h4>建筑结构 = 佛教宇宙的立体模型</h4>
+  <p>婆罗浮屠不是一座"寺庙"——它是一座<strong>立体的曼荼罗</strong>（Mandala），整座建筑就是一本用石头写成的佛经。从下到上代表了从<strong>欲界→色界→无色界</strong>的修行之路：</p>
   <div class="table-wrap"><table>
-    <thead><tr><th>景点</th><th>日期</th><th>门票</th><th>预约</th><th>渠道</th></tr></thead>
+    <thead><tr><th>层级</th><th>名称</th><th>佛教含义</th><th>你会看到什么</th></tr></thead>
     <tbody>
-      <tr style="background:#f0faf0"><td><strong>婆罗浮屠 日出+登顶</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在 yogyakartatour 包团</td></tr>
-      <tr style="background:#f0faf0"><td><strong>Punthuk Setumbu Hill</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团</td></tr>
-      <tr style="background:#f0faf0"><td><strong>Merapi Lava Tour</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（升级版）</td></tr>
-      <tr style="background:#f0faf0"><td><strong>普兰巴南</strong></td><td>D2 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团</td></tr>
-      <tr style="background:#f0faf0"><td><strong>Jomblang Cave 天坑</strong></td><td>D3 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（含装备+绳降+导游）</td></tr>
-      <tr style="background:#f0faf0"><td><strong>Timang Beach + Gondola</strong></td><td>D3 ✅</td><td colspan="3" style="color:#2d8659;font-weight:600">✅ 含在包团（含 4×4 Jeep+Gondola+午餐）</td></tr>
-      <tr><td><strong>皇宫 Kraton</strong></td><td>D1</td><td>~¥7</td><td><span class="badge easy">免预约</span></td><td>现场</td></tr>
-      <tr><td><strong>水宫 Taman Sari</strong></td><td>D1</td><td>~¥7</td><td><span class="badge easy">免预约</span></td><td>现场</td></tr>
-      <tr><td><strong>蜡染体验</strong></td><td>D4</td><td>~¥90–180/人</td><td><span class="badge rec">建议预约</span></td><td>Klook</td></tr>
-      <tr><td><strong>甘美兰体验</strong></td><td>D4</td><td>~¥90–150/人</td><td><span class="badge rec">建议预约</span></td><td>Klook / 酒店前台</td></tr>
-      <tr><td><strong>Sonobudoyo 皮影戏</strong></td><td>D4</td><td>~¥15–25/人</td><td><span class="badge easy">免预约</span></td><td>现场每晚 20:00</td></tr>
+      <tr><td><strong>底部</strong>（被掩埋）</td><td>Kāmadhātu 欲界</td><td>凡人被欲望束缚的世界</td><td>160 块浮雕描绘因果报应（大部分被后加的石基覆盖，只露出东南角一小段）</td></tr>
+      <tr><td><strong>中部</strong> 5 层方形回廊</td><td>Rūpadhātu 色界</td><td>修行者已脱离欲望但仍有物质形态</td><td><strong>1,460 块叙事浮雕</strong>——最精彩的部分！顺时针行走（pradaksina）阅读佛陀前世（本生经 Jātaka）和今生（Lalitavistara）的故事</td></tr>
+      <tr><td><strong>顶部</strong> 3 层圆形平台</td><td>Arūpadhātu 无色界</td><td>超越一切物质形态，接近涅槃</td><td><strong>72 座钟形透雕佛塔</strong>（Stupa），每座内有一尊佛像。透过菱形孔洞窥看佛像面容是经典体验。中央大塔代表最终的空与涅槃</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="callout green"><strong>💡 参观贴士：</strong><ul style="margin:6px 0 0 18px">
+    <li>跟导游<strong>顺时针走浮雕回廊</strong>（从东面入口开始），每一层的故事都有连续性，跳着走会"跳页"</li>
+    <li>浮雕中的<strong>菩提树</strong>出现频率极高——佛陀在菩提树下悟道</li>
+    <li>留意浮雕中的<strong>船只</strong>——证明 8 世纪爪哇已有远洋航海技术，与印度、中国有贸易往来</li>
+    <li>72 座小佛塔的佛像<strong>手印（Mudra）各不相同</strong>——代表不同方位的不同佛</li>
+    <li>日出时从 Setumbu Hill 远看 + 7:00 后近距离登顶，两种体验完全不同</li>
+  </ul></div>
+
+  <h3>🕉️ 普兰巴南 Prambanan · 印度教三位一体的石头交响曲</h3>
+  <p><strong>建造时间</strong>：约 850 年（桑贾亚 / 旧马塔兰王国）&nbsp;&nbsp;|&nbsp;&nbsp;<strong>UNESCO</strong>：1991 年列入&nbsp;&nbsp;|&nbsp;&nbsp;<strong>你会在 D2 下午参观 + 晚上看 Ramayana Ballet</strong></p>
+
+  <h4>三座主殿：印度教的 Trimurti</h4>
+  <p>普兰巴南的核心是三座高塔，分别供奉印度教三大主神——合称 <strong>Trimurti</strong>（三位一体）：</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>主殿</th><th>供奉</th><th>身份</th><th>坐骑（门前雕像）</th><th>你会看到什么</th></tr></thead>
+    <tbody>
+      <tr><td><strong>中央主塔（47m）</strong></td><td>🔱 <strong>湿婆 Shiva</strong></td><td>毁灭与再生之神</td><td>🐂 南迪（Nandi，神牛）</td><td>主殿内有 3m 高湿婆立像；北室有 Durga 像——当地人称 "Rara Jonggrang"</td></tr>
+      <tr><td><strong>北塔</strong></td><td>🌀 <strong>毗湿奴 Vishnu</strong></td><td>维护之神</td><td>🦅 迦楼罗（Garuda，神鹰）</td><td>毗湿奴像+克里希纳浮雕；<strong>Garuda 是印尼国徽</strong>，从这里来的！</td></tr>
+      <tr><td><strong>南塔</strong></td><td>🪷 <strong>梵天 Brahma</strong></td><td>创造之神</td><td>🦢 天鹅（Hamsa）</td><td>梵天像+《罗摩衍那》后半段浮雕</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>🎭 罗摩衍那 Ramayana · D2 晚上看的就是这个故事</h4>
+  <p>《罗摩衍那》是印度两大史诗之一，约成书于公元前 3 世纪。普兰巴南<strong>湿婆殿和梵天殿内壁</strong>用 42 块连续浮雕完整讲述了这个故事。Ramayana Ballet 就是这些石头浮雕的舞蹈版：</p>
+  <div class="info-grid">
+    <div class="info-box">
+      <h4>📖 故事梗概</h4>
+      <ol style="margin-left:16px;font-size:0.9rem;line-height:1.7">
+        <li><strong>阿逾陀国王子罗摩</strong>（Rama）因宫廷阴谋被流放森林 14 年，妻子<strong>悉达</strong>（Sita）和弟弟自愿同行</li>
+        <li>魔王<strong>罗波那</strong>（Ravana，十头魔王）用金鹿引开罗摩，趁机<strong>掳走悉达</strong>至兰卡岛</li>
+        <li>罗摩与<strong>猴王哈努曼</strong>（Hanuman）结盟，率猴军渡海进攻兰卡</li>
+        <li>史诗大战——哈努曼火烧兰卡城，罗摩用神弓射杀罗波那</li>
+        <li>罗摩救回悉达，返回阿逾陀登基为王。<strong>善战胜恶</strong>（Dharma over Adharma）</li>
+      </ol>
+    </div>
+    <div class="info-box">
+      <h4>🎭 Ballet 看点提示</h4>
+      <ul style="margin-left:16px;font-size:0.9rem;line-height:1.7">
+        <li><strong>金鹿诱惑</strong>：魔王变金鹿引开罗摩，舞者用闪亮金色服装演绎</li>
+        <li><strong>悉达被掳</strong>：最具张力的一幕——悉达在空中被魔王带走</li>
+        <li><strong>哈努曼戏耍</strong>：白色猴王是全场最活泼角色，大量杂技动作</li>
+        <li><strong>火烧兰卡</strong>：火把+烟雾+200名舞者混战，普兰巴南为背景</li>
+        <li><strong>终战射杀罗波那</strong>：罗摩张弓瞬间灯光打在寺庙上，全场高潮</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout"><strong>💡 Rara Jonggrang 传说：</strong>当地人对普兰巴南有自己的故事——美丽公主为拒绝 Bandung Bondowoso 的求婚，要求他一夜之间建 1000 座寺庙。她偷偷让女仆提前捣米制造天亮假象，Bandung 发现只建了 999 座时暴怒，将公主诅咒变成第 1000 座雕像——就是湿婆殿北室的 Durga 像。所以普兰巴南也叫 "Rara Jonggrang"（苗条少女）。</div>
+
+  <h3>🎵 爪哇活态文化遗产 · D4 亲身体验</h3>
+
+  <h4>🎵 甘美兰 Gamelan · 铜锣与木琴的宇宙和声</h4>
+  <p><strong>UNESCO 人类非物质文化遗产（2023年列入）</strong></p>
+  <p>甘美兰不是一种乐器——它是一套<strong>完整的打击乐合奏系统</strong>，由青铜锣（Gong）、金属键琴（Saron、Gender）、鼓（Kendang）、竹笛（Suling）等十几种乐器组成。爪哇甘美兰与巴厘岛甘美兰风格截然不同：</p>
+  <ul>
+    <li><strong>爪哇甘美兰</strong>：缓慢、冥想性、层次丰富，像流水般的音色；使用 Pelog（七音）和 Slendro（五音）两种音阶</li>
+    <li><strong>巴厘岛甘美兰</strong>：快速、激烈、充满活力，金属音色更尖锐</li>
+  </ul>
+  <p>在皇宫 Kraton 里，甘美兰不只是音乐——它是<strong>宫廷仪式的核心</strong>。每套甘美兰乐器组有自己的名字和灵魂，搬运前要烧香祈祷。演奏者要脱鞋、面向乐器鞠躬表示尊敬。D4 体验工坊会亲手敲击这些乐器——注意听 Kendang 鼓手如何控制整个乐团的节奏，那就是"指挥"。</p>
+
+  <h4>🎨 蜡染 Batik · 蜡与染料的千年对话</h4>
+  <p><strong>UNESCO 人类非物质文化遗产（2009年列入）</strong></p>
+  <p>蜡染是用<strong>熔蜡在布上画出图案，然后浸入染料</strong>的古老技艺。蜡覆盖的部分不吸收颜色，形成图案。这个过程要重复多次才能得到多层色彩。</p>
+  <p>日惹蜡染有严格的<strong>等级和场合规范</strong>：</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>图案</th><th>名称</th><th>含义/用途</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Parang</strong>（斜刀纹）</td><td>最高等级</td><td>历史上仅限苏丹家族穿着。波浪状斜纹象征无尽的力量和决心。</td></tr>
+      <tr><td><strong>Kawung</strong>（四瓣花）</td><td>高等级</td><td>象征纯洁和自制力。圆形图案来自 Aren 棕榈果横截面。</td></tr>
+      <tr><td><strong>Truntum</strong>（满天星）</td><td>婚礼用</td><td>新人父母穿的布料，象征引导和爱。据说是苏丹妃子在等待丈夫时创作的。</td></tr>
+      <tr><td><strong>Sido Mukti</strong></td><td>婚礼用</td><td>新人穿的蜡染。Sido = 成为，Mukti = 富足——对新人的祝福。</td></tr>
+    </tbody>
+  </table></div>
+  <p>日惹传统蜡染以<strong>棕、靛蓝、白</strong>三色为主（源自天然染料：Soga 树皮=棕、靛蓝植物=蓝、未染=白），风格内敛沉稳。你在 Abhati Studio 做的是<strong>手绘蜡染</strong>（Batik Tulis），使用 Canting（铜笔尖蜡笔）勾画——这是最传统也最耗时的技法，一块精品布要画数周。</p>
+
+  <h4>🎭 皮影戏 Wayang Kulit · 皮革上的宇宙剧场</h4>
+  <p><strong>UNESCO 人类非物质文化遗产（2003年列入，首批）</strong></p>
+  <p>Wayang Kulit 可能是爪哇最古老的表演艺术——<strong>一个人（Dalang，操偶师）</strong>同时操控几十个水牛皮影偶、为所有角色配音、指挥甘美兰乐队、即兴插入笑话和社会评论，一场完整演出可持续 <strong>7–8 小时</strong>（Sonobudoyo 旅游场为精华版 ~1.5h）。</p>
+  <p>影偶造型有严格规范：</p>
+  <ul>
+    <li><strong>头部下倾、鼻子小</strong> = 高贵谦逊的正面角色（如罗摩、阿周那）</li>
+    <li><strong>头部上扬、鼻子圆大</strong> = 粗鲁或邪恶角色（如魔王罗波那）</li>
+    <li><strong>丑角 Punakawan</strong>（Semar、Petruk、Gareng、Bagong）= 爪哇本土创造的角色，不在印度原版里。他们是仆人兼智者，用幽默讽刺权贵，全场最受欢迎</li>
+  </ul>
+  <p><strong>坐在白色幕布的两侧有完全不同的体验</strong>：正面看影子，背面看 Dalang 的操偶技巧。建议两边都坐坐。</p>
+
+  <h3>🌋 默拉皮火山 Merapi · 守护者与毁灭者</h3>
+  <p>默拉皮（意为"火之山"）是<strong>印尼最活跃的火山之一</strong>，海拔 2,968m，距日惹市区仅 28km，平均每 5–7 年喷发一次。最近一次大喷发在 <strong>2010 年</strong>——火山碎屑流以 150km/h 冲下南坡，造成 353 人死亡。</p>
+  <p>在爪哇文化中，默拉皮不只是地质现象：</p>
+  <ul>
+    <li>苏丹每年向默拉皮<strong>献祭</strong>（Labuhan 仪式），将食物、衣物、苏丹的指甲/头发送到火山口祈求平安</li>
+    <li>默拉皮和南海是日惹宇宙轴线的两极——皇宫在中间，苏丹调和天、地、火、水四种力量</li>
+    <li>当地人相信默拉皮有<strong>灵魂居民</strong>，Lava Tour 导游可能会讲当地灵异传说</li>
+  </ul>
+  <p>D2 Lava Tour 经过的 Kaliadem 废墟——扭曲的铁皮屋顶和半埋的房屋——就是 2010 年灾难的遗迹。</p>
+
+  <h3>⛏️ Jomblang Cave · 时间胶囊里的光</h3>
+  <p>Jomblang 是一个<strong>垂直塌陷天坑</strong>（Vertical Collapse Doline）——数百万年前地下河溶蚀石灰岩，顶部塌陷形成 60m 深的巨型竖井。天坑底部长期与外界隔绝，形成了<strong>独立的微型热带雨林生态系统</strong>。</p>
+  <p>绳降到底后穿越漆黑隧道到达 <strong>Grubug Hall</strong>——每天 10:00–12:00 阳光以特定角度从另一个天坑口射入，形成一道<strong>金色光柱照亮洞底的绿色苔藓</strong>——这就是 "Heaven's Light"。这不是人造效果，是纯粹的自然现象。</p>
+
+</section>
+
+<!-- 11. 景点预约 -->
+<section id="sec11">
+  <h2><span class="num">11</span>景点门票 + 预约指南</h2>
+  <div class="sec-summary">D2、D3 门票全含在 yogyakartatour 包团中。D4 甘美兰+蜡染 Klook 已购（已改为 14:00），皮影戏现场买票。D2 晚 Ramayana Ballet 需官网购票。</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>景点</th><th>日期</th><th>门票</th><th>预约方式</th><th>来源/渠道</th></tr></thead>
+    <tbody>
+      <tr><td><strong>婆罗浮屠 日出+登顶</strong></td><td>D2</td><td colspan="3">含在 yogyakartatour 包团（outlook 邮箱确认）</td></tr>
+      <tr><td><strong>Punthuk Setumbu Hill</strong></td><td>D2</td><td colspan="3">含在包团</td></tr>
+      <tr><td><strong>Merapi Lava Tour</strong></td><td>D2</td><td colspan="3">含在包团（升级版 $110/人）</td></tr>
+      <tr><td><strong>普兰巴南</strong></td><td>D2</td><td colspan="3">含在包团</td></tr>
+      <tr><td><strong>🎭 Ramayana Ballet</strong></td><td>D2 晚</td><td>Special ₹350k / VIP ₹450k</td><td>必须提前买</td><td><a href="https://ticket.borobudurpark.com/en/ramayana-ballet-prambanan/tickets/?cat=ramayana-ballet" target="_blank">官网购票</a></td></tr>
+      <tr><td><strong>Jomblang Cave 天坑</strong></td><td>D3</td><td colspan="3">含在 yogyakartatour 包团（outlook 邮箱确认）</td></tr>
+      <tr><td><strong>Timang Beach + Gondola</strong></td><td>D3</td><td colspan="3">含在包团（含 4×4 Jeep+Gondola+午餐）</td></tr>
+      <tr><td><strong>皇宫 Kraton</strong></td><td>D1</td><td>~¥7</td><td>免预约，现场</td><td>—</td></tr>
+      <tr><td><strong>水宫 Taman Sari</strong></td><td>D1</td><td>~¥7</td><td>免预约，现场</td><td>—</td></tr>
+      <tr><td><strong>甘美兰体验</strong></td><td>D4 09:00</td><td>已购</td><td>—</td><td>Klook 已购 · 2×成人</td></tr>
+      <tr><td><strong>蜡染体验</strong></td><td>D4 14:00</td><td>已购</td><td>—</td><td>Klook 已购 · 2×成人 · Abhati Studio</td></tr>
+      <tr><td><strong>Sonobudoyo 皮影戏</strong></td><td>D4 20:00</td><td>~¥15–25/人</td><td>免预约</td><td>现场每晚 20:00</td></tr>
     </tbody>
   </table></div>
 </section>
 
-<!-- 11. 交通 -->
-<section id="sec11">
-  <h2><span class="num">11</span>当地交通</h2>
-  <div class="sec-summary">D2、D3 全程含接送。D1、D4 市区步行/Grab。D0、D5 机场往返 Grab。</div>
+<!-- 12. 交通 -->
+<section id="sec12">
+  <h2><span class="num">12</span>当地交通</h2>
+  <div class="sec-summary">D2、D3 全程含接送。D2 晚需另安排往返普兰巴南（与司机沟通）。D1、D4 市区步行/Grab。</div>
   <div class="table-wrap"><table>
     <thead><tr><th>日期</th><th>交通</th><th>费用</th><th>备注</th></tr></thead>
     <tbody>
       <tr><td><strong>D0</strong></td><td>YIA→Phoenix Hotel</td><td>Grab ~¥110</td><td>~50min</td></tr>
       <tr style="background:#f0faf0"><td><strong>D1</strong></td><td>步行为主+Grab</td><td>~¥0–30</td><td>核心景点步行范围</td></tr>
-      <tr style="background:#f0faf0"><td><strong>D2</strong></td><td>✅ 包团全程接送</td><td>已含</td><td>03:45 接→15:30 送回</td></tr>
+      <tr style="background:#f0faf0"><td><strong>D2 白天</strong></td><td>✅ 包团全程接送</td><td>已含</td><td>03:45 接→15:30 送回</td></tr>
+      <tr><td><strong>D2 晚上</strong></td><td>酒店↔普兰巴南 Ramayana</td><td>与司机沟通</td><td>~18:30 出发→~22:00 回 · 请 D2 司机安排</td></tr>
       <tr style="background:#f0faf0"><td><strong>D3</strong></td><td>✅ 包团全程接送</td><td>已含</td><td>07:00 接→17:30 送回</td></tr>
-      <tr><td><strong>D4</strong></td><td>市区 Grab / 步行</td><td>~¥30–60</td><td>蜡染作坊+酒店+皮影戏</td></tr>
+      <tr><td><strong>D4</strong></td><td>Grab 为主</td><td>~¥40–80</td><td>甘美兰工坊→蜡染 Abhati Studio（Kotagede）→酒店→皮影戏</td></tr>
       <tr><td><strong>D5</strong></td><td>Phoenix→YIA</td><td>Grab ~¥110</td><td>15:30 出发</td></tr>
     </tbody>
   </table></div>
@@ -429,9 +737,9 @@
   </table></div>
 </section>
 
-<!-- 12. 餐饮 -->
-<section id="sec12">
-  <h2><span class="num">12</span>餐饮指南</h2>
+<!-- 13. 餐饮 -->
+<section id="sec13">
+  <h2><span class="num">13</span>餐饮指南</h2>
   <div class="sec-summary">日惹是爪哇美食之都。路边摊 ¥5–15，餐厅 ¥20–50，高端 ¥50–200。酒店含早，每天只需午餐+晚餐。</div>
   <h3>🍜 必吃清单</h3>
   <div class="table-wrap"><table>
@@ -444,67 +752,64 @@
       <tr><td><strong>Coffee Joss</strong></td><td>烧红木炭放入咖啡！</td><td>¥3–5</td><td>Malioboro 夜市</td></tr>
     </tbody>
   </table></div>
-  <h3>🍽️ 推荐餐厅</h3>
+  <h3>🍽️ 推荐餐厅 · 收藏到 Google Maps</h3>
+  <p style="font-size:0.88rem;color:#888;margin-bottom:16px">以下所有标 ⭐ 的餐厅建议收藏到 Google Maps，到时候看位置灵活安排。</p>
+
+  <h4>🏛️ 宫廷 / 传统爪哇</h4>
   <div class="table-wrap"><table>
-    <thead><tr><th>餐厅</th><th>类型</th><th>人均</th><th>建议</th></tr></thead>
+    <thead><tr><th>餐厅</th><th>类型/特色</th><th>人均</th><th>📍 位置</th><th>推荐</th></tr></thead>
     <tbody>
-      <tr><td><strong>Bale Raos</strong></td><td>宫廷料理</td><td>¥50–100</td><td>D1 午餐</td></tr>
-      <tr><td><strong>The House of Raminten</strong></td><td>传统爪哇</td><td>¥40–80</td><td>D4 午餐</td></tr>
-      <tr><td><strong>Gudeg Yu Djum</strong></td><td>Gudeg 老店</td><td>¥15–25</td><td>D0/D1 晚餐</td></tr>
-      <tr><td><strong>Mediterranea</strong></td><td>地中海+印尼</td><td>¥50–100</td><td>任意晚餐</td></tr>
+      <tr><td><strong>⭐ Bale Raos</strong></td><td>苏丹宫廷料理 · Bestik Jawa 爪哇牛排 · Beer Jawa 草药饮</td><td>¥50–100</td><td>Jl. Magangan Kulon No.1（皇宫内）</td><td>D1 午餐 已预订</td></tr>
+      <tr><td><strong>⭐ Ndalem Poenakawan</strong></td><td>传统爪哇 Joglo 古宅 · Brongkos Koyor（苏丹最爱辣椰浆炖菜）· Bir Jawa</td><td>¥25–50</td><td>Jl. KH. Ahmad Dahlan No.71</td><td>⭐ 4.6 分</td></tr>
+      <tr><td><strong>⭐ Warung Bu Ageng</strong></td><td>名人 Butet 创办 · Gudeg Manggar（椰花 Gudeg 少见！）· Lodeh Krecek</td><td>¥20–50</td><td>Jl. Tirtodipuran No.13（Prawirotaman）</td><td>⭐ 4.3 分</td></tr>
+      <tr><td><strong>⭐ Kesuma Restaurant</strong></td><td><strong>无味精</strong>健康爪哇菜 · Ayam Bumbu Areh（椰浆香料鸡）· TA #2</td><td>¥25–50</td><td>Gg. Demarkasi No.58</td><td>⭐ TA 4.5（#2!）</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>🍛 Gudeg 老字号</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>餐厅</th><th>类型/特色</th><th>人均</th><th>📍 位置</th><th>推荐</th></tr></thead>
+    <tbody>
+      <tr><td><strong>⭐ Gudeg Yu Djum</strong></td><td>日惹 Gudeg 代表 · Gudeg Komplit 全套 · 甜度适中</td><td>¥15–25</td><td>多家分店（Malioboro 附近有）</td><td>连锁方便</td></tr>
+      <tr><td><strong>⭐ Gudeg Pawon</strong></td><td><strong>柴火灶限量版</strong> · 21:30 开卖 · 卖完即止 · 排队体验</td><td>¥8–15</td><td>Jl. Janturan, Warungboto（Grab 20min）</td><td>仪式感满分</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>🔥 特色小吃 / 街头美食</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>餐厅</th><th>类型/特色</th><th>人均</th><th>📍 位置</th><th>推荐</th></tr></thead>
+    <tbody>
+      <tr><td><strong>⭐ Sate Klathak Pak Pong</strong></td><td>自行车辐条串炭火羊肉 · 只撒盐 · 烟熏味十足</td><td>¥15–30</td><td>Jl. Imogiri Barat（Bantul 方向）</td><td>必吃</td></tr>
+      <tr><td><strong>⭐ Angkringan Kopi Jos Pak Barjo</strong></td><td><strong>Coffee Joss 发明者</strong> · Nasi Kucing + 鸡肠沙爹</td><td>¥5–15</td><td>Jl. Wongsodirjan（Malioboro 火车站旁）</td><td>夜市文化</td></tr>
+      <tr><td><strong>⭐ Oseng Mercon Bu Narti</strong></td><td>"火药"辣炒牛肉 · 超辣挑战 · 不能吃辣慎选</td><td>¥12–25</td><td>Jl. Parangtritis</td><td>辣度爆表</td></tr>
+      <tr><td><strong>⭐ Bakmi Jawa Mbah Mo</strong></td><td>爪哇炒面/汤面 · 甜酱油调味 · 当地人最爱</td><td>¥8–15</td><td>Jl. Kranggan</td><td>老字号</td></tr>
+      <tr><td><strong>⭐ Ayam Goreng Suharti</strong></td><td>酥炸鸡之王 · Ayam Goreng Kremes 脆碎 · 家庭友好</td><td>¥15–35</td><td>Jl. Solo (Adisucipto)</td><td>全国有名</td></tr>
+      <tr><td><strong>⭐ Soto Kadipiro</strong></td><td>历史悠久鸡汤店 · Soto Ayam 经典</td><td>¥10–20</td><td>Kadipiro 区</td><td>本地人推荐</td></tr>
+      <tr><td><strong>⭐ Nasi Goreng Kambing Pak Granat</strong></td><td>人气羊肉炒饭 · 份量大</td><td>¥12–22</td><td>市区</td><td>排队名店</td></tr>
+    </tbody>
+  </table></div>
+
+  <h4>🌿 特色环境 / 融合菜 / 中高端</h4>
+  <div class="table-wrap"><table>
+    <thead><tr><th>餐厅</th><th>类型/特色</th><th>人均</th><th>📍 位置</th><th>推荐</th></tr></thead>
+    <tbody>
+      <tr><td><strong>⭐ Mediterranea</strong></td><td>地中海+印尼融合 · 花园庭院 · 牛排/意面/印尼菜</td><td>¥50–100</td><td>Jl. Prawirotaman</td><td>D5 告别午餐</td></tr>
+      <tr><td><strong>⭐ Madam Tan</strong></td><td>娘惹菜+印尼群岛 · <strong>Rijstafel 荷兰风味拼盘</strong>（一次尝遍多种菜）</td><td>¥20–40</td><td>Jl. C. Simanjuntak No.78A</td><td>⭐ TA 4.0</td></tr>
+      <tr><td><strong>⭐ Kalluna</strong></td><td>现代融合 · Santorini 蓝白风装修 · Crispy Duck Rice</td><td>¥30–60</td><td>Jl. Sajiono No.13</td><td>网红打卡</td></tr>
+      <tr><td><strong>⭐ Abhayagiri</strong></td><td><strong>山顶日落景观</strong> · 远眺普兰巴南+默拉皮 · 露天用餐</td><td>¥40–80</td><td>Sambirejo（离市区 ~30min）</td><td>日落绝美</td></tr>
+      <tr><td><strong>⭐ Lomari Resto</strong></td><td>精致现代爪哇 · Sop Buntut 牛尾汤 · 精致摆盘</td><td>¥35–70</td><td>市区</td><td>传统菜精致化</td></tr>
+      <tr><td><strong>⭐ Sekar Kedhaton</strong></td><td>花园餐厅 · <strong>Bebek Goreng</strong>（酥炸鸭镇店之宝）</td><td>¥25–55</td><td>市区</td><td>酥炸鸭必点</td></tr>
+      <tr><td><strong>⭐ Landhuis Resto</strong></td><td>殖民老宅 · Ayam Goreng Setan 魔鬼辣炸鸡 · Mangut Lele</td><td>¥15–30</td><td>Jl. Ipda Tut Harsono No.28</td><td>有氛围感</td></tr>
+      <tr><td><strong>⭐ Milas Vegetarian</strong></td><td>创意素食 · Tempeh 天贝料理 · 花园小巷 · 非素食者也爱</td><td>¥15–30</td><td>Jl. Prawirotaman 4 No.127B</td><td>⭐ 4.5 分</td></tr>
     </tbody>
   </table></div>
   <div class="callout"><strong>🍴 饮食注意：</strong>sambal 非常辣（说 "Tidak pedas" 不要辣）· 只喝瓶装水 · 选人气旺摊位 · 备止泻药</div>
 </section>
 
-<!-- 12b. 餐食待办 -->
-<section id="sec12b">
-  <h2><span class="num">🍽️</span>餐食待办 · Meal Slots</h2>
-  <div class="sec-summary">酒店每天含早餐；D2/D3 一日游午餐随行解决（含或路边吃）无需规划。以下列出需要主动安排的餐食时段。</div>
-  <div class="table-wrap"><table>
-    <thead><tr><th>日期</th><th>餐次</th><th>时间段</th><th>建议餐厅</th><th>人均</th><th>需预订？</th><th>备注</th></tr></thead>
-    <tbody>
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D0 · 4/30（抵达日）</td></tr>
-      <tr><td>D0</td><td>🌙 晚餐</td><td>19:30–21:00</td><td><strong>Malioboro 夜市</strong> — Nasi Kucing + Coffee Joss</td><td>¥10–30</td><td><span class="badge easy">免预订</span></td><td>到达首餐，逛吃体验为主</td></tr>
 
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D1 · 5/1（市区日）</td></tr>
-      <tr><td>D1</td><td>☀️ 午餐</td><td>12:00–13:30</td><td><strong>Bale Raos 宫廷料理</strong></td><td>¥50–100</td><td><span class="badge rec">建议预订</span></td><td>皇宫内餐厅，正宗宫廷菜，中午用餐高峰建议提前 1 天致电</td></tr>
-      <tr><td>D1</td><td>🌙 晚餐</td><td>18:30–20:00</td><td><strong>Gudeg Yu Djum</strong>（Gudeg 老字号）或 <strong>Sate Klathak Pak Pong</strong></td><td>¥15–30</td><td><span class="badge easy">免预订</span></td><td>两家都是排队名店，早点去不用等太久</td></tr>
-
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D2 · 5/2（一日游 · 午餐随行）</td></tr>
-      <tr><td>D2</td><td>🌙 晚餐</td><td>16:00–18:00</td><td><strong>Mediterranea</strong>（地中海+印尼融合）或 <strong>酒店附近简餐</strong></td><td>¥50–100</td><td><span class="badge rec">建议预订</span></td><td>15:30 回酒店，可能很累。Mediterranea 环境好适合放松；也可选酒店餐厅。建议 D1 晚致电预订</td></tr>
-
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D3 · 5/3（一日游 · 午餐已含）</td></tr>
-      <tr><td>D3</td><td>🌙 晚餐</td><td>18:00–19:30</td><td><strong>Sate Klathak Pak Pong</strong>（如 D1 没去）或 <strong>Gudeg Pawon</strong>（限量版柴火 Gudeg）</td><td>¥15–40</td><td><span class="badge easy">免预订</span></td><td>17:30 回酒店，可能较累，选酒店附近即可。Gudeg Pawon 在 Bantul，需 Grab 20min</td></tr>
-
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D4 · 5/4（文化日）</td></tr>
-      <tr><td>D4</td><td>☀️ 午餐</td><td>12:30–14:00</td><td><strong>The House of Raminten</strong></td><td>¥40–80</td><td><span class="badge must">必须预订</span></td><td>三层传统爪哇餐厅，极热门。<strong>务必提前 1–2 天致电预订</strong></td></tr>
-      <tr><td>D4</td><td>🌙 晚餐</td><td>19:00–19:45</td><td><strong>Warung Handayani</strong>（Nasi Gudeg）或 <strong>酒店附近快餐</strong></td><td>¥15–30</td><td><span class="badge easy">免预订</span></td><td>皮影戏 20:00 开场，晚餐需快速解决，选 Malioboro 附近</td></tr>
-
-      <tr style="background:#fff8e8"><td colspan="7" style="font-weight:700;color:#856404">D5 · 5/5（返程日）</td></tr>
-      <tr><td>D5</td><td>☀️ 午餐</td><td>14:00–15:00</td><td><strong>Nanamia Pizzeria</strong>（意式）或 <strong>Via Via Cafe</strong>（旅人咖啡馆）</td><td>¥30–60</td><td><span class="badge easy">免预订</span></td><td>最后一餐，轻松吃完取行李去机场</td></tr>
-    </tbody>
-  </table></div>
-
-  <div class="callout red"><strong>📋 需提前预订的餐厅（共 3 家）：</strong>
-    <ol style="margin:8px 0 0 24px">
-      <li><strong>Bale Raos</strong>（D1 午餐）— 建议出发前或 D0 晚上致电预订<br>📞 +62 274 373 682</li>
-      <li><strong>Mediterranea</strong>（D2 晚餐）— 建议 D1 白天致电预订<br>📞 +62 274 546 363</li>
-      <li><strong>The House of Raminten</strong>（D4 午餐）— 周末极热门，<strong>务必提前 1–2 天预订</strong><br>📞 +62 274 547 397</li>
-    </ol>
-  </div>
-  <div class="callout green"><strong>💡 餐食策略：</strong><ul style="margin:6px 0 0 18px">
-    <li>每天酒店含自助早餐，不用操心</li>
-    <li>D2/D3 午餐一日游随行吃，无需规划</li>
-    <li>晚餐优先选酒店步行范围内，一日游回来后不想再跑远</li>
-    <li>Gudeg/Sate Klathak/Nasi Kucing 是日惹三大必吃，尽量分配到不同天</li>
-    <li>D3 龙虾套餐（$50/4人）如果加购，下午回来可能不太饿，晚餐可简单吃</li>
-  </ul></div>
-</section>
-
-<!-- 13. 实用 Tips -->
-<section id="sec13">
-  <h2><span class="num">13</span>实用 Tips + 行前清单</h2>
+<!-- 14. 实用 Tips -->
+<section id="sec14">
+  <h2><span class="num">14</span>实用 Tips + 行前清单</h2>
   <div class="sec-summary">免签 30 天、时差仅 1 小时、5 月旱季最佳、欧标插头。</div>
   <div class="info-grid">
     <div class="info-box"><h4>🛂 签证</h4><ul style="margin-left:16px"><li>中国护照免签 30 天</li><li>护照有效期 ≥ 6 个月</li><li>需填 <strong>All Indonesia</strong> 电子入境表</li></ul></div>
@@ -566,8 +871,10 @@
       <li>☐ 下载 <strong>Google Maps</strong> 离线地图</li>
       <li>☐ 填写 <strong>All Indonesia</strong> 入境表</li>
       <li>☐ 确认 yogyakartatour D2 + D3 预订</li>
-      <li>☐ Klook 预订 D4 蜡染体验</li>
+      <li>☐ D4 蜡染+甘美兰 Klook 已购（确认凭证）</li>
+      <li>☐ <strong>购买 D2 Ramayana Ballet 门票</strong>（官网开卖后立即买！）</li>
       <li>☐ 购买旅游保险</li>
+      <li>☐ 收藏推荐餐厅到 Google Maps</li>
     </ul></div>
   </div>
 </section>
@@ -577,10 +884,51 @@
 <footer>
   <div class="container">
     <p><strong>Selamat jalan!</strong> 祝旅途愉快 🌴✈️</p>
-    <p style="margin-top:8px">Author: yirenguo &nbsp;|&nbsp; v6 &nbsp;|&nbsp; 2026-03-31</p>
-    <p style="margin-top:4px;opacity:0.7">🟢 D0–D4 已锁定 · 🟡 D5 半天待安排</p>
+    <p style="margin-top:8px">Author: yirenguo &nbsp;|&nbsp; v8 &nbsp;|&nbsp; 2026-04-07</p>
+    <p style="margin-top:4px;opacity:0.7">全程已确定 · D5 半天三选一 D4 晚决定 · 🎫 Ramayana Ballet 待购票</p>
   </div>
 </footer>
+
+<!-- Side Navigation -->
+<nav class="side-nav" id="sideNav">
+  <a href="#sec1"><span class="dot">1</span><span class="lbl">行程总览</span></a>
+  <a href="#sec2"><span class="dot">2</span><span class="lbl">机票</span></a>
+  <a href="#sec3"><span class="dot">3</span><span class="lbl">酒店</span></a>
+  <a href="#sec4"><span class="dot">D0</span><span class="lbl">出发日</span></a>
+  <a href="#sec5"><span class="dot">D1</span><span class="lbl">市区探索</span></a>
+  <a href="#sec6"><span class="dot">D2</span><span class="lbl">遗产+火山</span></a>
+  <a href="#sec7"><span class="dot">D3</span><span class="lbl">天坑+海滩</span></a>
+  <a href="#sec8"><span class="dot">D4</span><span class="lbl">文化体验</span></a>
+  <a href="#sec9"><span class="dot">D5</span><span class="lbl">返程</span></a>
+  <a href="#sec10"><span class="dot">10</span><span class="lbl">文化指南</span></a>
+  <a href="#sec11"><span class="dot">11</span><span class="lbl">景点预约</span></a>
+  <a href="#sec12"><span class="dot">12</span><span class="lbl">交通</span></a>
+  <a href="#sec13"><span class="dot">13</span><span class="lbl">餐饮</span></a>
+  <a href="#sec14"><span class="dot">14</span><span class="lbl">实用Tips</span></a>
+</nav>
+
+<script>
+// Scroll-spy for side nav
+(function(){
+  const nav = document.getElementById('sideNav');
+  if(!nav) return;
+  const links = nav.querySelectorAll('a[href^="#"]');
+  const sectionIds = Array.from(links).map(a => a.getAttribute('href').slice(1));
+  const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+  function update(){
+    let current = '';
+    const scrollY = window.scrollY + 120;
+    for(let i = sections.length - 1; i >= 0; i--){
+      if(sections[i].offsetTop <= scrollY){ current = sections[i].id; break; }
+    }
+    links.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  window.addEventListener('scroll', update, {passive:true});
+  update();
+})();
+</script>
 
 </body>
 </html>
